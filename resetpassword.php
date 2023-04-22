@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset Password</title>
+  <?php include './partials/requirements.php' ?>
   <style>
      @import url('https://fonts.cdnfonts.com/css/gotham');
                 
@@ -132,7 +133,7 @@ margin-left: -15px;
 }
 
   </style>
-  <script>
+  <!-- <script>
     function checkPasswordMatch() {
       var password1 = document.getElementById("password1").value;
       var password2 = document.getElementById("password2").value;
@@ -143,12 +144,12 @@ margin-left: -15px;
         error.innerHTML = "";
       }
     }
-  </script>
+  </script> -->
 </head>
 <body>
   <div class="reset-box">
     <div class="image-box">
-      <img src="logo1.jpg" alt="Reset Password Image">
+      <img src="./assets/images/logo1.jpg" alt="Reset Password Image">
     </div>
     <h2>Reset Password</h2>
     <div class="password-boxes">
@@ -168,8 +169,9 @@ margin-left: -15px;
   </div>
  
 
-  
+  <script src="./js/auth.js"></script>
   <script>
+    let token = "";
     function checkPasswordMatch() {
       var password1 = document.getElementById("new-password").value;
       var password2 = document.getElementById("confirm-password").value;
@@ -180,6 +182,15 @@ margin-left: -15px;
         error.innerHTML = "";
         document.getElementById("set-password-error").style.display = "none";
         // continue with password reset
+        token = JSON.parse(localStorage.getItem('access_token'));
+        if(token != "");
+        axios.post('http://fca.systemiial.com/api/reset-password',{
+          password:password1,
+          token
+        }).then(response => {
+            localStorage.removeItem('access_token');
+            window.location.replace('login.php');
+        })
       }
     }
 

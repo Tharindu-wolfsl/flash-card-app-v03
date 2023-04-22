@@ -35,14 +35,16 @@
 </html>
 
 <style>
-    .show{
+    .show {
         line-height: 30px;
     }
-    .answers .btn{
-        color:white;
+
+    .answers .btn {
+        color: white;
         width: 100%;
     }
-    .answer{
+
+    .answer {
         display: flex;
         align-items: center;
         width: 100%;
@@ -50,18 +52,23 @@
         line-height: 35px;
         margin-bottom: 8px;
     }
-    .answer-perfect{
+
+    .answer-perfect {
         background-color: #6BDC58;
     }
-    .answer-poor{
+
+    .answer-poor {
         background-color: #FD6D6D;
     }
-    .answer-good{
+
+    .answer-good {
         background-color: #FAC565;
     }
-    .answer-repeat{
+
+    .answer-repeat {
         background-color: #2CE4E2;
     }
+
     .card {
         margin-top: 40px;
         min-height: 400px;
@@ -93,12 +100,13 @@
         height: 100vh;
         width: 100%;
     }
-    @media (max-width: 991.98px) { 
-        body{
-        background-position: center;
-        background-size: cover;
+
+    @media (max-width: 991.98px) {
+        body {
+            background-position: center;
+            background-size: cover;
         }
-     }
+    }
 
 
     ul {

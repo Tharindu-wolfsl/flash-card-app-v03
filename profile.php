@@ -83,7 +83,7 @@
                 <div class="col-xl-5 col-lg-4">
                     <ul class="nav-set d-flex flex-column justify-content-evenly align-items-start">
                         <li class="nav-tab nav-item w-100"><a href="#" class="nav-link  rounded-pill pill-1 text-light">EDIT PROFILE <span class="i bi bi-chevron-right mx-1"></span></a></li>
-                        <li class="nav-tab nav-item w-100 "><a href="#" class="nav-link  rounded-pill pill-2 text-light">CHANGE PASSWORD <span class="i bi bi-chevron-right mx-1"></span></a></li>
+                        <li class="nav-tab nav-item w-100 "><a href="./resetpassword.php" class="nav-link  rounded-pill pill-2 text-light">CHANGE PASSWORD <span class="i bi bi-chevron-right mx-1"></span></a></li>
                         <li class="nav-tab nav-item w-100 "><a href="#" class="nav-link  rounded-pill pill-3 text-light">DELETE ACCOUNT <span class="i bi bi-chevron-right mx-1"></span></a></li>
                     </ul>
                 </div>
