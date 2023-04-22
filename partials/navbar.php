@@ -44,15 +44,4 @@
     }
   }
 </style>
-<script>
-  
-  $('#logout').click(()=>{
-    if(confirm() == true){
-    localStorage.removeItem('access_token');
-    window.location.replace('../login.php');
-  }else{
-
-    }
-  })
-
-</script>
+<script src="../js/logout.js" defer></script>

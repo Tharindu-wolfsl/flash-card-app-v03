@@ -7,48 +7,8 @@
     <title>FlashCard</title>
     <link rel="stylesheet" href="./style.css">
     <?php include './partials/requirements.php' ?>
-    <script>
-        $(document).ready(function() {
-        // $(window).on('load', function() {
-        console.log("Work211212");
-          let user = {
-            name: '',
-            email: '',
-            subjects: []
-          };
-          const token = JSON.parse(localStorage.getItem('access_token'));
-          axios.get('http://fca.systemiial.com/api/view-profile', {
-            params: {
-              token: token
-            }
-          }).then(res => {
-            console.log(res.data);
-            let data = res.data;
-            if(res.data && res.data.success){
-                user.name = data.data.name;
-            user.email = data.data.email;
-            user.subjects = data.data.subjects;
-            console.log(" user.subjects", user.subjects);
-            $('.contact-details  #card-name').append(user.name);
-            $('.contact-details  #card-email').append(user.email);
-
-            user.subjects.forEach(subject=>{
-              let template = `<span class="subject border-radius-2">${subject.name}</span`
-              $('.contact-details  #card-subject').append(template);
-
-            })
-            }else{
-                console.log("Authentication failed");
-                window.location.replace('login.php');
-            }
-           
-            // $('#name').contents =  user.name;
-          })
-          
-          console.log("window loaded");
-        });
-    //   })
-    </script>
+    <script src="./js/auth.js"></script>
+   
 </head>
 
 <body>
@@ -82,7 +42,7 @@
                 </div>
                 <div class="col-xl-5 col-lg-4">
                     <ul class="nav-set d-flex flex-column justify-content-evenly align-items-start">
-                        <li class="nav-tab nav-item w-100"><a href="#" class="nav-link  rounded-pill pill-1 text-light">EDIT PROFILE <span class="i bi bi-chevron-right mx-1"></span></a></li>
+                        <li class="nav-tab nav-item w-100"><a href="./updateProfile.php" class="nav-link  rounded-pill pill-1 text-light">EDIT PROFILE <span class="i bi bi-chevron-right mx-1"></span></a></li>
                         <li class="nav-tab nav-item w-100 "><a href="./resetpassword.php" class="nav-link  rounded-pill pill-2 text-light">CHANGE PASSWORD <span class="i bi bi-chevron-right mx-1"></span></a></li>
                         <li class="nav-tab nav-item w-100 "><a href="#" class="nav-link  rounded-pill pill-3 text-light">DELETE ACCOUNT <span class="i bi bi-chevron-right mx-1"></span></a></li>
                     </ul>

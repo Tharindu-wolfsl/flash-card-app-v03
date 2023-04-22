@@ -20,7 +20,9 @@
             </div>
         </div>
     </div>
+
     <?php include './partials/footer.php' ?>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>

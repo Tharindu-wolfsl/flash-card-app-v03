@@ -49,10 +49,8 @@
     <?php include './partials/footer.php' ?>
 </body>
 </html>
-<script>
+<script src="./js/auth.js"></script>
 
-
-</script>
 
 
 <style>

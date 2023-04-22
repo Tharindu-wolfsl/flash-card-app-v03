@@ -151,8 +151,11 @@
     <h1>Welcome Back,<br><span>login</span> to continue!</h1>
     <form>
       <input id="username" type="text" name="username" placeholder="Enter Username">
+      <span class="username-errors text-danger"></span>
       <div class="password-container">
         <input id="password" type="password" name="password" placeholder="Enter Password">
+        <span class="password-errors text-danger"></span>
+        <span class="unauth-errors text-danger"></span>
         <span class="show-password" onclick="showPassword()">view</span>
         <span class="forgot-password" onclick="forgotPassword()"><a href="#">Forgot password?</a></span>
       </div>
@@ -196,6 +199,11 @@
   </script>
   <script>
     const message = "";
+    const errors = {
+      password: [],
+      email: [],
+      status: []
+    }
 
     $(document).ready(function() {
 
@@ -216,11 +224,38 @@
           }
         }).then(response => {
           console.log(response.data.access_token);
-          localStorage.removeItem('access_token');
-          localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-          window.location.replace("selectcard.php");
+          if (response.data.user) {
+            document.querySelector(".unauth-errors").textContent = "";
+            document.querySelector(".username-errors").textContent = "";
+            document.querySelector(".password-errors").textContent = "";
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user');
+            localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            window.location.replace("selectcard.php");
+          } else {
+            console.log(response.data);
+          }
 
-          // alert("response", response);
+        }).catch(errors => {
+          document.querySelector(".unauth-errors").textContent = "";
+          document.querySelector(".username-errors").textContent = "";
+          document.querySelector(".password-errors").textContent = "";
+          console.log(errors.response.data);
+          const error_list = errors.response.data;
+          if (error_list) {
+            if (error_list.error) {
+              document.querySelector(".unauth-errors").textContent = "Invalid email or passowrd, please try again!";
+            }
+            if (error_list.email && error_list.email.length != 0) {
+              document.querySelector(".username-errors").textContent = error_list.email[0];
+            }
+            if (error_list.password && error_list.password.length != 0) {
+              console.log(error_list.password[0]);
+              document.querySelector(".password-errors").textContent = error_list.password[0];
+            }
+
+          }
         })
       })
 

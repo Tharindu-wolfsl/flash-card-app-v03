@@ -16,6 +16,7 @@
         <?php include './partials/updateSubjectCard.php' ?>
     </div>
     <?php include './partials/footer.php' ?>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>
