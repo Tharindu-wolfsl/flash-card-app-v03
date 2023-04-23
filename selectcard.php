@@ -7,6 +7,8 @@
     <title>FlashCard</title>
     <link rel="stylesheet" href="./style.css">
     <?php include './partials/requirements.php' ?>
+    <script src="./js/auth.js"></script>
+  
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                 SELECT <span>A CARD</span> TO PLAY
             </h3>
             <div class="cards-set row mx-aut gy-3">
-                <div class=" col-lg-4 col-md-6 col-sm-12 mx-auto d-flex ">
+                <!-- <div class=" col-lg-4 col-md-6 col-sm-12 mx-auto d-flex ">
                 <div class="subject-card col  mx-auto"><span class="card-header">CHEMISTRY</span>
                     <div class="card-content d-flex">
                         <button class="btn play">Play Deck</button>
@@ -42,17 +44,42 @@
                         <span class="subject-vl"></span>
                         <button class="btn view">View Sub Deck</button>
                     </div></div>    
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
     <?php include './partials/footer.php' ?>
+    <script>
+        window.onload = async () => {
+            console.log("Work");
+            const access_token =JSON.parse(localStorage.getItem('access_token'));
+            await axios.get('http://fca.systemiial.com/api/view-profile', {
+                params:{
+                    token : access_token
+                }
+            }).then(response => {
+                let subjects = [];
+                let template = ``;
+                let card_section = document.querySelector('.cards-set');
+
+                console.log(response.data.data.subjects);
+                subjects = response.data.data.subjects;
+                subjects.forEach( subject => {
+                    template = `<div class=" col-lg-4 col-md-6 col-sm-12 mx-auto d-flex ">
+                <div class="subject-card col  mx-auto"><span class="card-header">${subject.name}</span>
+                    <div class="card-content d-flex">
+                        <button class="btn play">Play Deck</button>
+                        <span class="subject-vl"></span>
+                        <button class="btn view">View Sub Deck</button>
+                    </div></div>    
+                </div>`;
+                $('.cards-set').append(template);
+                })
+            })
+        }
+    </script>
 </body>
 </html>
-<script src="./js/auth.js"></script>
-
-
-
 <style>
     .card-sec-title{
         position: relative;
