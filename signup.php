@@ -240,7 +240,7 @@ if (isset($_POST['submit'])) {
                     $('.name-error').text(``);
                     $('.email-error').text(``);
                     $('.password-error').text(``);
-                    window.location.replace("login.php");
+                    window.location.replace("index.php");
                     // alert("response", response);
                 }).catch(e=>{
                     if(e.response.data){

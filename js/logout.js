@@ -5,7 +5,7 @@ $("#logout").click(() => {
   if (confirm() == true) {
     console.log("Confirm");
     localStorage.removeItem("access_token");
-    window.location.replace("../login.php");
+    window.location.replace("../index.php");
   } else {
   }
 });

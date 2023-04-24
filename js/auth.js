@@ -1,6 +1,5 @@
 $(document).ready(function() {
 // $(window).on('load', function() {
-console.log("Work211212");
   let user = {
     name: '',
     email: '',
@@ -29,7 +28,7 @@ console.log("Work211212");
     })
     }else{
         console.log("Authentication failed");
-        window.location.replace('login.php');
+        window.location.replace('index.php');
     }
    
     // $('#name').contents =  user.name;

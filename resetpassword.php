@@ -189,7 +189,7 @@ margin-left: -15px;
           token
         }).then(response => {
             localStorage.removeItem('access_token');
-            window.location.replace('login.php');
+            window.location.replace('index.php');
         })
       }
     }
