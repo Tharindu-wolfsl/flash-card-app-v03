@@ -13,7 +13,7 @@
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
     <div class="container">
-        <div class="card  ms-auto col-lg-5 col-md-8 col-sm-12">
+        <div class="card  ms-auto col-lg-6 col-md-8 col-sm-12">
             <div class="card-body  d-flex flex-column align-items-center justify-content-center">
                 <h5 class="card-title">QUESTION</h5>
                 <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod. Cupiditate, consequuntur non. Aut voluptas, sequi fugiat veritatis nulla deserunt eum ex? Magni laboriosam soluta cupiditate!</p>
@@ -31,11 +31,11 @@
 
     .card{
         margin-top: 80px;
-        min-height: 500px;
+        min-height: 450px;
         border-radius: 40px 40px 40px 0px;
         background-color:  rgb(20, 79, 76);
         color: white;
-        padding: 60px;
+        padding: 40px 50px 60px 40px;
         }
         .card-title{
             text-align: center;
@@ -65,4 +65,10 @@
         }
         
      }
+     /* @media (min-width: 992px)  { 
+        .card{
+            width: 45%;
+        }
+        
+     } */
 </style>

@@ -29,6 +29,7 @@
         background-repeat: no-repeat;
         height: 100vh;
         width: 100%;
+        font-family: var(--font-poppins);
     }
 
     @media (max-width: 991.98px) {

@@ -1,4 +1,4 @@
-<nav class="navbar navigation-bar navbar-expand-lg navbar-dark py-2 ">
+<nav class="navbar navigation-bar navbar-expand-lg navbar-dark py-3 ">
   <div class="container">
     <a class="navbar-brand" href="#"><img class="header-logo" src="../assets/images/header-logo.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
     }
   @media (max-width: 575.98px) {
     .header-logo{
-      width: 25%;
+      width: 40%;
     }
   }
 </style>

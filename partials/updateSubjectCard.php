@@ -3,16 +3,16 @@
         <span class="form-logo"></span>
         <form class="w-100">
             <div class="my-3">
-                <label for="exampleInputEmail1" class="form-label mb-2 "><strong>Name</strong></label>
+                <label for="exampleInputEmail1" class="form-label mb-2  b-text">Name</label>
                 <input class="border border-success rounded-pill w-100" type="text" class="form-control" id="exampleInputEmail1" placeholder="Name">
             </div>
             <div class="my-3">
-                <label for="exampleInputEmail1" class="form-label mb-2 "><strong>Your email</strong></label>
+                <label for="exampleInputEmail1" class="form-label mb-2  b-text">Your email</label>
                 <input class="border border-success rounded-pill w-100" type="email" class="form-control" id="exampleInputEmail1" placeholder="youremail@gmail.com">
             </div>
             <div class="my-3 form-checks">
                 <div class="check-container w-100 d-flex flex-column justify-content-center align-items-center">
-                    <span class="check-title mb-3"><strong>Select your subjects</strong></span>
+                    <span class="check-title mb-3 b-text">Select your subjects</span>
                     <div class="checkboxes col-md-8 p-1 d-flex flex-column">
                         <div class="row row-1 my-2">
                             <div class="check-box col d-flex justify-content-start"> <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -33,12 +33,16 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn submit rounded-pill w-100">Save</button>
+            <button type="submit" class="btn submit rounded-pill w-100">SAVE</button>
         </form>
     </div>
 </div>
 
 <style>
+    .b-text{
+        font-weight: 500;
+    }
+ 
     .card {
         border-radius: 40px;
         padding-left: 50px;

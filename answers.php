@@ -12,16 +12,17 @@
 <body>
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
+    <div class="answer-bg">
     <div class="container">
-        <div class="card  ms-auto col-lg-5 col-md-8 col-sm-12 mb-2">
+        <div class="card  ms-auto col-lg-5 mt-5 col-md-8 col-sm-12 mb-3">
             <div class="card-body  d-flex flex-column align-items-center justify-content-center">
-                <span class="card-title">ANSWERS</span>
+                <span class="card-title">ANSWER</span>
                 <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod.</p>
                 <div class="answers mt-4 col-sm-10 d-flex flex-column">
-                    <button class="btn rounded-pill answer answer-perfect"><img src="./assets/icons/perfect_32.png" alt=""><span>PERFECT</span><span class="time ms-auto">1&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-poor"><img src="./assets/icons/poor_32.png" alt=""><span>POOR</span><span class="time ms-auto">8&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-good"><img src="./assets/icons/good_32.png" alt=""><span>GOOD</span><span class="time ms-auto">10&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-repeat"><img src="./assets/icons/repeat_32.png" alt=""><span>REPEAT</span><span class="time ms-auto">4&nbsp;days</span></button>
+                    <button class="btn rounded-pill answer answer-perfect"><img src="./assets/icons/perfect.png" alt=""><span>PERFECT</span><span class="time ms-auto">1&nbsp;min</span></button>
+                    <button class="btn rounded-pill answer answer-poor"><img src="./assets/icons/poor.ico" alt=""><span>POOR</span><span class="time ms-auto">8&nbsp;min</span></button>
+                    <button class="btn rounded-pill answer answer-good"><img src="./assets/icons/good.ico" alt=""><span>GOOD</span><span class="time ms-auto">10&nbsp;min</span></button>
+                    <button class="btn rounded-pill answer answer-repeat"><img src="./assets/icons/repeat.ico" alt=""><span>REPEAT</span><span class="time ms-auto">4&nbsp;days</span></button>
                 </div>
             </div>
         </div>
@@ -29,12 +30,23 @@
             <button class="btn btn-dark rounded-pill px-4 py-2 text-center w-100">Show Answer</button>
         </div>
     </div>
+    </div>
     <?php include './partials/footer.php' ?>
 </body>
 
 </html>
 
 <style>
+    .answer-bg{
+        background: url('./assets/images/asnwers-bg.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 58px 9px white inset;
+        background-color: white;
+        background-blend-mode: multiply;
+        margin-top: 0;
+
+    }
     .show {
         line-height: 30px;
     }
@@ -48,8 +60,8 @@
         display: flex;
         align-items: center;
         width: 100%;
-        padding-inline: 20px;
-        line-height: 35px;
+        padding-inline: 18px;
+        line-height: 20px;
         margin-bottom: 8px;
     }
 
@@ -72,10 +84,10 @@
     .card {
         margin-top: 40px;
         min-height: 400px;
-        border-radius: 40px 40px 40px 0px;
+        border-radius: 50px 50px 50px 0px;
         background-color: rgb(20, 79, 76);
         color: white;
-        padding: 40px;
+        padding: 30px 20px 10px 20px;
     }
 
     .card-title {
@@ -83,6 +95,7 @@
         margin-bottom: 20px;
         font-size: 28px;
         font-weight: 700;
+        font-family:var(--font-poppins);
     }
 
     .card-text {
@@ -93,9 +106,9 @@
     }
 
     body {
-        background: url('./assets/images/asnwers-bg.png');
-        background-position: left;
-        background-size: contain;
+        background: url('./assets/images/background.jpg');
+        background-position: center;
+        background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
         width: 100%;

@@ -4,8 +4,9 @@
 <head>
   <title>OTP Verification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
   <style>
-    @import url('https://fonts.cdnfonts.com/css/gotham');
+    /* @import url('https://fonts.cdnfonts.com/css/gotham'); */
 
     body .container {
       height: 500px;
@@ -39,17 +40,17 @@
       text-align: center;
       margin-bottom: 15px;
       font-size: 24px;
-      font-family: 'Gotham medium', sans-serif;
+    
     }
 
     .cancel {
       color: #045a4f;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 400;
       margin-left: 160px;
       font-size: 18px;
       cursor: pointer;
-      font-family: 'Gotham medium', sans-serif;
+    
     }
 
     .otp-input {
@@ -120,13 +121,13 @@
 
     .resend-code a:hover {
       text-decoration: underline;
-      font-family: 'Gotham medium', sans-serif;
+    
 
     }
 
     .resend-otp {
       color: #808080;
-      font-family: 'Gotham medium', sans-serif;
+    
     }
   </style>
 </head>
