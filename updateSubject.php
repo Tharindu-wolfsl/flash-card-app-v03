@@ -12,6 +12,7 @@
 <body>
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
+    <div class="updated-sub-bg"></div>
     <div class="container">
         <?php include './partials/updateSubjectCard.php' ?>
     </div>
@@ -22,8 +23,13 @@
 </html>
 
 <style>
-    body {
-        background: url('./assets/images/update-subject.png');
+    body{
+        position: relative;
+        font-family: var(--font-poppins);
+    }
+   .updated-sub-bg {
+        position: absolute;
+        background: url('./assets/images/up-sub-bg.png');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

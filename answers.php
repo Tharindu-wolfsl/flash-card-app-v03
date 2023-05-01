@@ -20,9 +20,9 @@
                 <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod.</p>
                 <div class="answers mt-4 col-sm-10 d-flex flex-column">
                     <button class="btn rounded-pill answer answer-perfect"><img src="./assets/icons/perfect.png" alt=""><span>PERFECT</span><span class="time ms-auto">1&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-poor"><img src="./assets/icons/poor.ico" alt=""><span>POOR</span><span class="time ms-auto">8&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-good"><img src="./assets/icons/good.ico" alt=""><span>GOOD</span><span class="time ms-auto">10&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-repeat"><img src="./assets/icons/repeat.ico" alt=""><span>REPEAT</span><span class="time ms-auto">4&nbsp;days</span></button>
+                    <button class="btn rounded-pill answer answer-poor"><img src="./assets/icons/poor-new.png" alt=""><span>POOR</span><span class="time ms-auto">8&nbsp;min</span></button>
+                    <button class="btn rounded-pill answer answer-good"><img src="./assets/icons/good-new.png" alt=""><span>GOOD</span><span class="time ms-auto">10&nbsp;min</span></button>
+                    <button class="btn rounded-pill answer answer-repeat"><img src="./assets/icons/repeat-new.png" alt=""><span>REPEAT</span><span class="time ms-auto">4&nbsp;days</span></button>
                 </div>
             </div>
         </div>
@@ -38,12 +38,11 @@
 
 <style>
     .answer-bg{
-        background: url('./assets/images/asnwers-bg.png');
+        background: url('./assets/images/ans-bg.png');
         background-size: contain;
         background-repeat: no-repeat;
-        box-shadow: 0 0 58px 9px white inset;
         background-color: white;
-        background-blend-mode: multiply;
+        background-position: left;
         margin-top: 0;
 
     }
@@ -135,4 +134,15 @@
         margin: 0;
         border: none;
     }
+
+    .answers img{
+        margin-right: 5px;
+    }
+
+    @media (max-width: 991.98px) {  
+        .answer-bg{
+        background-size: cover;
+    }
+    }
+
 </style>

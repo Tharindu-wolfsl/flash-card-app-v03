@@ -1,166 +1,49 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>OTP Verification</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* @import url('https://fonts.cdnfonts.com/css/gotham'); */
-
-    body .container {
-      height: 500px;
-      width: 500px;
-      margin: auto;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ccc;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 40px;
-    }
-
-    .image131 img {
-      max-width: 280px;
-      margin-top: -35px;
-      margin-bottom: 50px;
-    }
-
-    .text {
-      margin-top: -30px;
-      margin-right: 20px;
-      font-size: 18px;
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 24px;
-    
-    }
-
-    .cancel {
-      color: #045a4f;
-      text-decoration: none;
-      font-weight: 400;
-      margin-left: 160px;
-      font-size: 18px;
-      cursor: pointer;
-    
-    }
-
-    .otp-input {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .otp-input input[type="text"] {
-      width: 70px;
-      height: 30px;
-      margin: 0 10px;
-      font-size: 24px;
-      text-align: center;
-      border: none;
-      border-bottom: 2px solid #ccc;
-      outline: none;
-    }
-
-    .submit {
-      display: block;
-      margin-top: 60px;
-      max-width: 100%;
-      height: 50px;
-      border: none;
-      border-radius: 25px;
-      background-color: #045a4f;
-      color: #fff;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-      width: 415px;
-      margin-bottom: 30px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .container {
-        height: auto;
-        width: 90%;
-      }
-    }
-
-    .para {
-      margin-right: 160px;
-      margin-top: -15px;
-      color: #808080;
-      margin-bottom: -30px;
-    }
-
-
-    .para1 {
-      margin-right: 160px;
-      margin-left: -90px;
-      color: #808080;
-
-
-    }
-
-    .resend-code {
-      margin-top: 20px;
-    }
-
-    .resend-code a {
-      color: green;
-      text-decoration: none;
-    }
-
-    .resend-code a:hover {
-      text-decoration: underline;
-    
-
-    }
-
-    .resend-otp {
-      color: #808080;
-    
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashCard</title>
+    <link rel="stylesheet" href="./style.css">
+    <?php include './partials/requirements.php' ?>
 </head>
 
-<body style="background-image: url('./assets/images/background.jpg'); background-size: cover; background-repeat: no-repeat; margin: 0; padding: 0;">
-  <div class="container">
-    <div class="image131">
-      <img src="./assets/images/logo1.jpg" alt="Image">
-    </div>
-    <div class="text">
-      OTP Verification
-      <span class="cancel">Cancel</span>
-    </div>
-    <div class="para">
-      <p>We just sent a 4-digit code to your email</p>
+<body>
+    <?php include './partials/header2.php' ?>
+    <div class="container otp-container">
+        <div class="row align-items-center">
+            <div class="card ms-auto col-lg-5 col-md-8 col-sm-12">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center ">
+                    <span class="form-logo"></span>
+                    <form class="w-100">
+                        <div class="my-3 otp-title d-flex justify-content-between align-items-center">
+                            <label for="exampleInputEmail1" class="form-label mb-2  b-text h3">OTP Verification</label>
+                            <label for="exampleInputEmail1" class="form-label mb-2  b-text cancel">Cancel</label>
+                        </div>
+                        <div class="my-3 otp-content">
+                            <label for="exampleInputEmail1" class="form-label mb-2  b-text">We’ve just send you 4 digits code to your email</label>
+                            <label for="exampleInputEmail1" class="form-label mb-2  b-text">example@example.com</label>
+                        </div>
+                        <div class="my-3 otp-input-set form-inputs">
+                            <div class="otp-input">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn submit rounded-pill w-100">continue</button>
+                    </form>
+                    <div class="my-3 otp-resend">
+                        <label for="">Didn’t received the code?<a  href="#">Resend Code</a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-    <div class="para1">
-      <p><b>example@example.com</b></p>
-    </div>
-
-    <div class="otp-input">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-    </div>
-    <button class="submit">CONTINUE</button>
-    <div class="resend-otp">
-      <span> Didn't recived the code? <b><a href="#" style="color: #045a4f; text-decoration: none;">Resend Code</a></b>.</span>
-    </div>
-
-
+    <?php include './partials/footer.php' ?>
     <script>
       const cancelButton = document.querySelector('.cancel');
       cancelButton.addEventListener('click', function() {
@@ -169,3 +52,123 @@
       });
     </script>
 </body>
+
+</html>
+
+
+<style>
+    body {
+        font-family: var(--font-poppins);
+        background: url('./assets/images/background.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .otp-container .card {
+        margin: 100px auto;
+    }
+
+    .otp-title :nth-child(1) {
+        font-weight: 700;
+
+    }
+
+    .otp-title :nth-child(2) {
+        color: rgb(20, 79, 76);
+        margin-bottom: 0 !important;
+        font-weight: 600;
+    }
+
+    .otp-content :nth-child(1) {
+        color: #8c8e9f;
+    }
+
+    .otp-content :nth-child(2) {
+        color: #75788d;
+    }
+
+    .otp-input {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .otp-input input[type="text"] {
+        width: 70px;
+        height: 30px;
+        margin: 0 10px;
+        font-size: 24px;
+        text-align: center;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        outline: none;
+    }
+
+    .otp-resend label{
+        color: #8c8e9f;
+    }
+    .otp-resend label a{
+        color: rgb(20, 79, 76);
+        font-weight: 600;
+        text-decoration: none !important;
+        margin-left: 5px;      
+    }
+
+    .otp-input-set{
+        padding: 30px 0;
+    }
+
+    .b-text {
+        font-weight: 500;
+    }
+
+    .card {
+        border-radius: 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        box-shadow: 4px 5px 10px -5px;
+    }
+
+    .form-checks {
+        padding: 0;
+    }
+
+    .form-check-label small {
+        font-size: smaller;
+        font-weight: 500;
+
+    }
+
+    .form-logo {
+        background: url('../assets/images/logo1.jpg');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100px;
+        width: 100%;
+    }
+
+    .rounded-pill {
+        border: 1px solid rgb(20, 79, 76);
+        padding: 0.8rem;
+    }
+
+
+    .submit {
+        background-color: rgb(20, 79, 76);
+        color: white;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    @media (max-width: 575.98px) {
+        .card {
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+        }
+
+    }
+</style>

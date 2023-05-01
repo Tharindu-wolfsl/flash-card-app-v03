@@ -50,7 +50,7 @@
             font-weight: 100;
         }
     body {
-        background: url('./assets/images/quection-card.png');
+        background: url('./assets/images/quec-bg.png');
         background-position: left;
         background-size: contain;
         background-repeat: no-repeat;
@@ -65,10 +65,4 @@
         }
         
      }
-     /* @media (min-width: 992px)  { 
-        .card{
-            width: 45%;
-        }
-        
-     } */
 </style>

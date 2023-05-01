@@ -1,4 +1,4 @@
-<div class="card mt-4 ms-auto col-lg-5 col-md-8 col-sm-12">
+<div class="card ms-auto col-lg-5 col-md-8 col-sm-12">
     <div class="card-body d-flex flex-column justify-content-center align-items-center ">
         <span class="form-logo"></span>
         <form class="w-100">
@@ -48,6 +48,7 @@
         padding-left: 50px;
         padding-right: 50px;
         box-shadow: 4px 5px 10px -5px;
+        margin-top: 80px;
     }
 
     .form-checks {
