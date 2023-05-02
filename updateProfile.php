@@ -12,6 +12,7 @@
             background-position: center center;
             margin: 0;
             padding: 0;
+            font-family: var(--font-poppins) !important;
         }
 
         .signup-box {
@@ -88,37 +89,37 @@
             text-decoration: underline;
         }
 
-        .signup-box .checkboxes {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+
+        .form-logo {
+            background: url('./assets/images/logo1.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100px;
+            width: 100%;
         }
 
-        .checkbox-group {
-            display: flex;
-            gap: 15px;
-            padding-bottom: 20px;
-            margin-left: 45px;
+        .inline-checkbox label {
+            margin-bottom: 0 !important;
         }
 
-        .inline-checkbox {
-            display: flex;
-            gap: 5px;
-            align-items: center;
+        .rounded-pill {
+            border: 1px solid rgb(20, 79, 76);
+            padding: 1rem;
         }
 
-        .inline-checkbox>label {
-            padding-top: 4px;
+
+        #form-submit {
+            display: block;
+            background-color: rgb(20, 79, 76);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .signup-box .checkbox {
-            display: flex;
-            align-items: center;
-        }
-
-        .signup-box .checkbox input[type="checkbox"] {
-            margin-right: 5px;
-        }
 
         @media screen and (max-width: 640px) {
             .signup-box {
@@ -128,86 +129,85 @@
             }
         }
     </style>
-        <?php include './partials/requirements.php' ?>
+    <link rel="stylesheet" href="./style.css">
+    <?php include './partials/requirements.php' ?>
 </head>
 
 <body>
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
-    <div class="signup-box">
-        <img src="./assets/images/background.jpg">
-
-        <form method="post" action="process_form.php">
+    <div class="signup-box p-5">
+        <img class="mb-5" src="./assets/images/logo-update-subject.png">
+        <form method="post" action="process_form.php" class="my-4">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="Enter Your Name">
-            <span  style="color:red;" class="name-error"></span>
+            <span style="color:red;" class="name-error"></span>
 
             <!-- Rest of the code -->
         </form>
 
         <center><label>Select your Subject</label></center>
 
-        <div class="checkbox-group">
-            <div class="inline-checkbox chem-error">
-                <input class="subjects" type="checkbox" name="chemistry" id="chemistry" value="1">
+        <div class="checkbox-group d-flex justify-content-around py-3">
+            <div class="inline-checkbox chem-error d-flex align-items-center">
+                <input class="subjects me-2" type="checkbox" name="chemistry" id="chemistry" value="1">
                 <label for="chemistry">Chemistry</label>
             </div>
-            <div class="inline-checkbo maths-error">
-                <input class="subjects" type="checkbox" name="maths" id="maths" value="2">
+            <div class="inline-checkbox maths-error d-flex align-items-center">
+                <input class="subjects me-2" type="checkbox" name="maths" id="maths" value="2">
                 <label for="maths">Maths</label>
             </div>
-            <div class="inline-checkbo phy-errorx">
-                <input class="subjects" type="checkbox" name="physics" id="physics" value="3">
+            <div class="inline-checkbox phy-errorx d-flex align-items-center">
+                <input class="subjects me-2" type="checkbox" name="physics" id="physics" value="3">
                 <label for="physics">Physics</label>
             </div>
-            <div class="inline-checkbox bio-error">
-                <input class="subjects" type="checkbox" name="biology" id="biology" value="4">
+            <div class="inline-checkbox bio-error d-flex align-items-center">
+                <input class="subjects me-2" type="checkbox" name="biology" id="biology" value="4">
                 <label for="biology">Biology</label>
             </div>
         </div>
-        <center><input id="form-submit" type="button" name="submit" value="Update"></center>
-        </form>
+      <button class="my-4 btn submit rounded-pill w-50 py-2" id="form-submit" type="button" name="submit">Update</button>
     </div>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./js/auth.js"></script>
     <script>
-        window.onload = async function(){
+        window.onload = async function() {
             let profileData = [];
             let selectedSubjects = [];
             const access_token = JSON.parse(localStorage.getItem("access_token"));
 
-            await axios.get('http://fca.systemiial.com/api/view-profile',{
-                params:{
-                    token:access_token
+            await axios.get('http://fca.systemiial.com/api/view-profile', {
+                params: {
+                    token: access_token
                 }
             }).then(response => {
                 profileData = response.data.data;
-                if(profileData){
-                document.getElementById("name").value = profileData.name;
-            }
+                if (profileData) {
+                    document.getElementById("name").value = profileData.name;
+                }
             })
             // const access_token = JSON.parse(localStorage.getItem("access_token"));
             // console.log("1dsdsdd");
             console.log("ProfileData", profileData);
-            if(profileData){
-                if(profileData.subjects){
+            if (profileData) {
+                if (profileData.subjects) {
                     profileData.subjects.forEach(data => {
                         selectedSubjects.push(data.id);
                     })
                     console.log("selectedSubjects", selectedSubjects);
-                    selectedSubjects.forEach(checked_id=>{
-                        if(checked_id == 1){
-                             $('#chemistry').attr('checked',true);
+                    selectedSubjects.forEach(checked_id => {
+                        if (checked_id == 1) {
+                            $('#chemistry').attr('checked', true);
                         }
-                        if(checked_id == 2){
-                             $('#maths').attr('checked',true);
+                        if (checked_id == 2) {
+                            $('#maths').attr('checked', true);
                         }
-                        if(checked_id == 3){
-                             $('#physics').attr('checked',true);
+                        if (checked_id == 3) {
+                            $('#physics').attr('checked', true);
                         }
-                        if(checked_id == 4){
-                             $('#biology').attr('checked',true);
+                        if (checked_id == 4) {
+                            $('#biology').attr('checked', true);
                         }
                     })
                 }
@@ -216,7 +216,7 @@
     </script>
     <script>
         $(document).ready(function() {
-            
+
             const access_token = JSON.parse(localStorage.getItem("access_token"));
 
             $('#form-submit').click(function() {
@@ -227,42 +227,38 @@
                 let errors = [];
                 name = document.getElementById("name").value;
                 subjects = document.querySelectorAll('input[type="checkbox"]:checked');
-                
+
                 subjects.forEach(subject => {
-                    if(subject.name == 'chemistry'){
+                    if (subject.name == 'chemistry') {
                         selectedSubjectIds = selectedSubjectIds + "1,"
-                    }
-                    else if(subject.name == 'maths'){
+                    } else if (subject.name == 'maths') {
                         selectedSubjectIds = selectedSubjectIds + "2,"
+                    } else if (subject.name == 'physics') {
+                        selectedSubjectIds = selectedSubjectIds + "3,"
+                    } else if (subject.name == 'biology') {
+                        selectedSubjectIds = selectedSubjectIds + "4,"
                     }
-                    
-                    else if(subject.name == 'physics'){
-                       selectedSubjectIds = selectedSubjectIds + "3,"
-                    } 
-                    else if(subject.name == 'biology'){
-                       selectedSubjectIds = selectedSubjectIds + "4,"
-                    } 
                 })
-                
+
                 selectedSubjectIds = selectedSubjectIds.slice(0, -1);
                 console.log(name, 'name');
                 console.log(selectedSubjectIds, 'subjects');
                 axios.post('http://fca.systemiial.com/api/update-profile', {
-                        name:name,
-                        pref_ids: selectedSubjectIds,
-                        token:access_token
+                    name: name,
+                    pref_ids: selectedSubjectIds,
+                    token: access_token
                 }).then(response => {
-                    console.log(response.data,"data");
+                    console.log(response.data, "data");
                     $('.name-error').text(``);
+                    window.location.replace('profile.php');
                     // alert("response", response);
-                }).catch(e=>{
-                    if(e.response.data){
+                }).catch(e => {
+                    if (e.response.data) {
                         errors = JSON.parse(e.response.data);
-                        if(errors['name'] && errors['name'][0]){
+                        if (errors['name'] && errors['name'][0]) {
                             $('.name-error').text(`${errors['name'][0]}`);
                         }
-                    }
-                    else{
+                    } else {
                         console.log(e.response.message);
 
                     }

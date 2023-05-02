@@ -21,8 +21,8 @@
             <div class="row row-md section-row">
                 <div class="col-xl-6 col-lg-7 col-md-9 mx-md-auto col-sm-12">
                     <div class="profile-card d-sm-flex justify-content-between align-items-center  mx-sm-auto">
-                        <div class="profile-pic">
-                            J
+                        <div class="profile-pic" id="profile-letter">
+                            
                         </div>
                         <div class="contact-details ">
                             <span class="contact-titles my-2">YOUR NAME</span>

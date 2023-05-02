@@ -4,8 +4,15 @@
 <head>
   <title>Login Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
   <style type="text/css">
-    @import url('https://fonts.cdnfonts.com/css/gotham');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap');
+
+
+    :root {
+      /* --font-maia:'Maia', sans-serif; */
+      --font-poppins: 'Poppins', sans-serif;
+    }
 
     body {
       background-image: url("./assets/images/background.jpg");
@@ -14,6 +21,7 @@
       background-position: center center;
       margin: 0;
       padding: 0;
+      font-family: var(--font-poppins) !important;
     }
 
     .login-box {
@@ -39,7 +47,7 @@
       text-align: center;
       font-size: 28px;
       margin-bottom: 20px;
-      font-family: 'Gotham medium', sans-serif;
+
 
 
     }
@@ -50,7 +58,7 @@
 
     .login-box label,
     .login-box input[type="text"],
-    .login-box input[type="password"],
+
     .login-box input[type="submit"] {
       width: 100%;
       max-width: 305px;
@@ -80,7 +88,7 @@
       cursor: pointer;
       margin-bottom: 15px;
       width: 100%;
-      max-width: 370px;
+      max-width: 19rem;
     }
 
     .login-box .sign-in {
@@ -111,6 +119,8 @@
       background-color: #045a4f;
       color: #fff;
       border-radius: 5px;
+
+
     }
 
     @media screen and (max-width: 640px) {
@@ -126,18 +136,39 @@
     }
 
     .forgot-password {
-      float: right;
-
+      width: 100%;
+      display: flex;
+      justify-content: end;
       cursor: pointer;
-
       margin-bottom: 15px;
-      margin-right: 30px;
+      margin-right: 1rem;
 
     }
 
     .forgot-password a {
       color: #808080;
       text-decoration: none;
+      margin-right: 1.5rem;
+    }
+
+    .lock {
+      position: absolute;
+      width: 20px !important;
+      top: -8px;
+      left: 45px;
+    }
+
+    #password {
+      padding-left: 45px;
+      width: 100%;
+      max-width: 19rem;
+    }
+
+    #form-submit {
+      width: 100% !important;
+      text-align: center;
+      background-color: #045a4f;
+      color: white;
     }
   </style>
   <?php include './partials/requirements.php' ?>
@@ -145,6 +176,7 @@
 </head>
 
 <body>
+<?php include './partials/header2.php' ?>
   <?php include './partials/forgotPasswordPopup.php' ?>
   <div class="login-box">
     <img src="./assets/images/logo1.jpg">
@@ -154,12 +186,13 @@
       <span class="username-errors text-danger"></span>
       <div class="password-container">
         <input id="password" type="password" name="password" placeholder="Enter Password">
+        <img src="./assets/icons/lock.png" class="lock">
         <span class="password-errors text-danger"></span>
         <span class="unauth-errors text-danger"></span>
         <span class="show-password" onclick="showPassword()">view</span>
-        <span class="forgot-password" onclick="forgotPassword()"><a href="#">Forgot password?</a></span>
       </div>
-      <center><input id="form-submit" type="button" name="submit" value="SIGN IN"></center>
+      <span class="forgot-password" onclick="forgotPassword()"><a href="#">Forgot password?</a></span>
+      <button class="my-4 btn submit rounded-pill w-50 py-3" id="form-submit" type="button" name="submit">SIGN IN</button>
       <div class="sign-in">
         Don't have an account? <a href="./signup.php">Sign up here</a>
       </div>

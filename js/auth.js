@@ -18,8 +18,10 @@ $(document).ready(function() {
     user.email = data.data.email;
     user.subjects = data.data.subjects;
     console.log(" user.subjects", user.subjects);
+    console.log("New");
     $('.contact-details  #card-name').append(user.name);
     $('.contact-details  #card-email').append(user.email);
+    $('.profile-card #profile-letter').append(user.name.charAt(0).toUpperCase());
 
     user.subjects.forEach(subject=>{
       let template = `<span class="subject border-radius-2">${subject.name}</span`
