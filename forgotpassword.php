@@ -103,8 +103,10 @@
       color: #808080;
     }
   </style>
+      <?php include './partials/requirements.php' ?>
 </head>
 <body>
+<?php include './partials/forgotPasswordPopup.php' ?>
   <div class="reset-box">
     <div class="image-box">
       <img src="./assets/images/logo1.jpg" alt="Forgot Password Image">
@@ -115,9 +117,9 @@
     </center>
     <input type="email" name="email" placeholder=" Email" class="email-input" id="email-input">
     <div id="email-validation-message"></div>
-    <button class="save-button" onclick="validateEmail()">SEND</button>
+    <button class="save-button" onclick="forgotPassword()">SEND</button>
     <div class="resend-otp">
-      <span>Didn't received the code?<b> <a href="#" style="color: #045a4f; text-decoration: none;">Resend Code</a></b>.</span>
+      <span>Didn't received the code?<b> <a href="#" style="color: #045a4f; text-decoration: none;" onclick="forgotPassword">Resend Code</a></b>.</span>
     </div>
   </div>
   <script>
@@ -133,7 +135,24 @@
         validationMessage.style.color = "red";
       } else {
         validationMessage.textContent = "";
-      
+      }
+    }
+      //onclick forgot password
+
+      async function forgotPassword() {
+      let username = "";
+      username = document.getElementById("email-input").value;
+      if(username == ""){
+        validateEmail();
+      }else{
+        await axios.get('http://fca.systemiial.com/api/forgot-password', {
+        params: {
+          email: username
+        }
+      }).then(response => {
+        console.log(response.data);
+        $('#exampleModalCenter').modal('show');
+      })
       }
     }
   </script>

@@ -177,7 +177,6 @@
 
 <body>
 <?php include './partials/header2.php' ?>
-  <?php include './partials/forgotPasswordPopup.php' ?>
   <div class="login-box">
     <img src="./assets/images/logo1.jpg">
     <h1>Welcome Back,<br><span>login</span> to continue!</h1>
@@ -191,7 +190,7 @@
         <span class="unauth-errors text-danger"></span>
         <span class="show-password" onclick="showPassword()">view</span>
       </div>
-      <span class="forgot-password" onclick="forgotPassword()"><a href="#">Forgot password?</a></span>
+      <span class="forgot-password"><a href="forgotpassword.php">Forgot password?</a></span>
       <button class="my-4 btn submit rounded-pill w-50 py-3" id="form-submit" type="button" name="submit">SIGN IN</button>
       <div class="sign-in">
         Don't have an account? <a href="./signup.php">Sign up here</a>
@@ -213,21 +212,6 @@
         passwordField.type = "password";
         showPasswordBtn.textContent = "view";
       }
-    }
-    //onclick forgot password
-
-    async function forgotPassword() {
-      let username = "";
-      username = document.getElementById("username").value;
-      await axios.get('http://fca.systemiial.com/api/forgot-password', {
-        params: {
-          email: username
-        }
-      }).then(response => {
-        console.log(response.data);
-        $('#exampleModalCenter').modal('show');
-
-      })
     }
   </script>
   <script>

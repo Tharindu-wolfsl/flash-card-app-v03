@@ -259,7 +259,7 @@ if (isset($_POST['submit'])) {
         </div>
        <button class="my-4 btn submit rounded-pill w-100 py-2" id="form-submit" type="button" name="submit">SIGN UP</button>
         <div class="sign-up">
-            Already have an account? <a href="#">Sign in</a>
+            Already have an account? <a href="index.php">Sign in</a>
         </div>
         </form>
     </div>
