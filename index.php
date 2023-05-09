@@ -26,20 +26,20 @@
 
     .login-box {
       width: 90%;
-      max-width: 400px;
+      max-width: 512px;
       margin: 0 auto;
       background-color: #fff;
-      padding: 20px;
+      padding: 20px 50px;
       border-radius: 25px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       position: relative;
-      top: 100px;
+      margin-top: 4rem;
     }
 
     .login-box img {
       display: block;
       margin: 0 auto;
-      width: 200px;
+      width: 280px;
       margin-top: 20px;
     }
 
@@ -58,10 +58,8 @@
 
     .login-box label,
     .login-box input[type="text"],
-
     .login-box input[type="submit"] {
-      width: 100%;
-      max-width: 305px;
+      width: 90%;
     }
 
     .login-box label {
@@ -74,8 +72,7 @@
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 25px;
-      margin-left: 28px;
-      border: 2px solid #045a4f !important;
+      border: 1px solid #045a4f !important;
       outline: none;
     }
 
@@ -108,6 +105,8 @@
     .login-box .password-container {
       position: relative;
       width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     .show-password {
@@ -153,15 +152,21 @@
 
     .lock {
       position: absolute;
-      width: 20px !important;
-      top: -8px;
+      width: 16px !important;
+      top: -4px;
       left: 45px;
     }
 
     #password {
       padding-left: 45px;
+      width: 90%;
+    }
+
+    .email-container {
       width: 100%;
-      max-width: 19rem;
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
     }
 
     #form-submit {
@@ -172,17 +177,18 @@
     }
   </style>
   <?php include './partials/requirements.php' ?>
-
 </head>
 
 <body>
-<?php include './partials/header2.php' ?>
+  <?php include './partials/header2.php' ?>
   <div class="login-box">
     <img src="./assets/images/logo1.jpg">
     <h1>Welcome Back,<br><span>login</span> to continue!</h1>
     <form>
-      <input id="username" type="text" name="username" placeholder="Enter Username">
-      <span class="username-errors text-danger"></span>
+      <div class="email-container">
+        <input id="username" type="text" name="username" placeholder="Enter Username">
+        <span class="username-errors text-danger"></span>
+      </div>
       <div class="password-container">
         <input id="password" type="password" name="password" placeholder="Enter Password">
         <img src="./assets/icons/lock.png" class="lock">
@@ -279,4 +285,5 @@
 
     })
   </script>
+    <?php include './partials/footer2.php' ?>
 </body>
