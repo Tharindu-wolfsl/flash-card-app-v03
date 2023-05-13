@@ -22,25 +22,28 @@
       margin: 0;
       padding: 0;
       font-family: var(--font-poppins) !important;
+      font-size: 12px !important;
     }
 
     .login-box {
-      width: 90%;
-      max-width: 512px;
+      width: 100%;
+      max-width: 480px;
       margin: 0 auto;
       background-color: #fff;
-      padding: 20px 50px;
+      padding: 0px 40px;
       border-radius: 25px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       position: relative;
-      margin-top: 4rem;
+      margin-top: 5rem;
+      padding-bottom: 0.5rem;
+      padding-top: 1rem;
+
     }
 
-    .login-box img {
+    .login-box .logo {
       display: block;
       margin: 0 auto;
-      width: 280px;
-      margin-top: 20px;
+      width: 245px;
     }
 
     .login-box h1 {
@@ -70,7 +73,6 @@
     .login-box input[type="text"],
     .login-box input[type="password"] {
       padding: 15px;
-      margin-bottom: 20px;
       border-radius: 25px;
       border: 1px solid #045a4f !important;
       outline: none;
@@ -107,6 +109,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-bottom: 0;
     }
 
     .show-password {
@@ -139,6 +142,7 @@
       display: flex;
       justify-content: end;
       cursor: pointer;
+      margin-top: 15px;
       margin-bottom: 15px;
       margin-right: 1rem;
 
@@ -147,14 +151,14 @@
     .forgot-password a {
       color: #808080;
       text-decoration: none;
-      margin-right: 1.5rem;
+      margin-right: 2rem;
     }
 
     .lock {
       position: absolute;
-      width: 16px !important;
-      top: -4px;
-      left: 45px;
+      width: 14px !important;
+      top: 14px;
+      left: 53px;
     }
 
     #password {
@@ -163,6 +167,7 @@
     }
 
     .email-container {
+      position: relative;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -174,6 +179,19 @@
       text-align: center;
       background-color: #045a4f;
       color: white;
+      padding: 0.8rem;
+    }
+
+    .email-container,
+    .password-container {
+      margin: 2.3rem auto;
+      padding: 0 1.2rem;
+    }
+
+    .errors {
+      position: absolute;
+      top: 3.8rem;
+      left: 2rem;
     }
   </style>
   <?php include './partials/requirements.php' ?>
@@ -182,22 +200,27 @@
 <body>
   <?php include './partials/header2.php' ?>
   <div class="login-box">
-    <img src="./assets/images/logo1.jpg">
+    <img class="logo" src="./assets/images/logo1.jpg">
     <h1>Welcome Back,<br><span>login</span> to continue!</h1>
     <form>
       <div class="email-container">
         <input id="username" type="text" name="username" placeholder="Enter Username">
-        <span class="username-errors text-danger"></span>
+        <div class="errors">
+          <span class="username-errors text-danger d-block"></span>
+        </div>
       </div>
       <div class="password-container">
         <input id="password" type="password" name="password" placeholder="Enter Password">
         <img src="./assets/icons/lock.png" class="lock">
-        <span class="password-errors text-danger"></span>
-        <span class="unauth-errors text-danger"></span>
         <span class="show-password" onclick="showPassword()">view</span>
+        <div class="errors">
+          <span class="password-errors text-danger d-block"></span>
+          <span class="unauth-errors text-danger d-block"></span>
+        </div>
       </div>
+
       <span class="forgot-password"><a href="forgotpassword.php">Forgot password?</a></span>
-      <button class="my-4 btn submit rounded-pill w-50 py-3" id="form-submit" type="button" name="submit">SIGN IN</button>
+      <button class="my-2 btn submit rounded-pill w-50" id="form-submit" type="button" name="submit">SIGN IN</button>
       <div class="sign-in">
         Don't have an account? <a href="./signup.php">Sign up here</a>
       </div>
@@ -285,5 +308,5 @@
 
     })
   </script>
-    <?php include './partials/footer2.php' ?>
+  <?php include './partials/footer2.php' ?>
 </body>

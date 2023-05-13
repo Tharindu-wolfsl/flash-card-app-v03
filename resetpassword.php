@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset Password</title>
   <?php include './partials/requirements.php' ?>
+
   <style>
-     @import url('https://fonts.cdnfonts.com/css/gotham');
-                
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap');
+
+
+    :root {
+      /* --font-maia:'Maia', sans-serif; */
+      --font-poppins: 'Poppins', sans-serif;
+    }
+
     body {
       background-image: url("./assets/images/background.jpg");
       background-size: cover;
       background-position: center;
+      font-family: var(--font-poppins);
     }
 
     .reset-box {
-      width: 500px;
-      height: 480px;
+      position: relative;
+      width: 480px;
       background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      margin: auto;
-      margin-top: 20vh;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
       border-radius: 30px;
+      font-size: 12px;
+      margin: 0 auto;
+      top: 6rem;
+
     }
 
     .image-box {
@@ -33,25 +43,33 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 50px;
     }
 
-    .image-box img {
+    .image-box .logo {
       display: block;
       margin-bottom: 25px;
       width: 230px;
-      margin-top: -30px;
       max-width: 100%;
     }
 
+    .password-boxes{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      width: 100%;
+      padding: 0 4rem;
+      padding-bottom: 0 !important;
+    }
+
     .password-boxes input[type=password] {
-      width: 350px;
-      margin-bottom: 50px;
-      padding: 18px;
+      width: 100%;
+      margin-bottom: 3.5rem;
+      padding: 14px;
       font-size: 16px;
       border-radius: 50px;
-      border: 2px solid #045a4f;
-      margin-left: -15px;
+      border: 1px solid #045a4f;
     }
 
     .password-container {
@@ -72,7 +90,7 @@
       outline: none;
     }
 
-    .password-input:focus + input[type="text"] {
+    .password-input:focus+input[type="text"] {
       display: block;
       position: absolute;
       top: 0;
@@ -81,29 +99,30 @@
       z-index: -1;
     }
 
-    .save-button, .signin-button .save-button {
-      width: 430px;
+    .save-button,
+    .signin-button .save-button {
+      width: 100%;
       padding: 15px;
-      font-size: 18px;
+      font-size: 14px;
       border-radius: 35px;
       border: none;
       cursor: pointer;
       color: white;
       background-color: #045a4f;
+      margin-top: 1rem;
+
     }
 
-    .save-button:hover, .signin-button:hover {
+    .save-button:hover,
+    .signin-button:hover {
       background-color: #0d8066;
     }
 
     h2 {
       display: flex;
       align-items: center;
-      margin-bottom: 50px;
-      margin-top: -45px;
       font-size: 30px;
-      font-family: 'Gotham medium', sans-serif;
-      font-weight: 470;
+      font-weight: 500;
     }
 
     .error {
@@ -114,24 +133,29 @@
 
     .password-container {
       position: relative;
+      width: 100%;
     }
 
-   
-    .password-container {
-  position: relative;
-}
 
-.password-label {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 20px;
-  color: gray;
-  font-size: 18px;
-margin-top: 24px;
-margin-left: -15px;
-}
+    .password-label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 10px;
+      color: gray;
+      font-size: 14px;
+      margin-top: 24px;
 
+    }
+
+    .password-container2 input {
+      margin-bottom: 0 !important;
+    }
+    .button-box{
+      width: 100%;
+      padding: 0 2rem;
+      margin-bottom:3rem;
+    }
   </style>
   <!-- <script>
     function checkPasswordMatch() {
@@ -146,32 +170,36 @@ margin-left: -15px;
     }
   </script> -->
 </head>
+
 <body>
+<?php include './partials/header2.php' ?>
   <div class="reset-box">
     <div class="image-box">
-      <img src="./assets/images/logo1.jpg" alt="Reset Password Image">
+      <img class="logo" src="./assets/images/logo1.jpg" alt="Reset Password Image">
     </div>
     <h2>Reset Password</h2>
     <div class="password-boxes">
-  <div class="password-container">
-    <input type="password" id="new-password" placeholder="New Password">
-    <label for="new-password" class="password-label">(Enter a 8 or more characters long password)</label>
-  </div>
-  <div class="password-container">
-    <input type="password" id="confirm-password" placeholder="Re-enter the new password">
-    <input type="text" id="confirm-password-text" style="display:none;">
-  </div>
-  <p id="password-error" class="error"></p>
-</div>
-
+      <div class="password-container">
+        <input type="password" id="new-password" placeholder="New Password">
+        <label for="new-password" class="password-label">(Enter a 8 or more characters long password)</label>
+      </div> 
+      <div class="password-container password-container2">
+        <input type="password" id="confirm-password" placeholder="Re-enter the new password">
+        <input type="text" id="confirm-password-text" style="display:none;">
+      </div>
+      <p id="password-error" class="error"></p>
+    </div>
+    <div class="button-box">
     <button class="save-button" onclick="checkPasswordMatch()">SAVE AND SIGN IN</button>
+    </div>
     <p id="set-password-error" class="error" style="display:none;">Passwords do not match</p>
   </div>
- 
 
-  <script src="./js/auth.js"></script>
+
+  <!-- <script src="./js/auth.js"></script> -->
   <script>
     let token = "";
+
     function checkPasswordMatch() {
       var password1 = document.getElementById("new-password").value;
       var password2 = document.getElementById("confirm-password").value;
@@ -183,13 +211,13 @@ margin-left: -15px;
         document.getElementById("set-password-error").style.display = "none";
         // continue with password reset
         token = JSON.parse(localStorage.getItem('access_token'));
-        if(token != "");
-        axios.post('http://fca.systemiial.com/api/reset-password',{
-          password:password1,
+        if (token != "");
+        axios.post('http://fca.systemiial.com/api/reset-password', {
+          password: password1,
           token
         }).then(response => {
-            localStorage.removeItem('access_token');
-            window.location.replace('index.php');
+          localStorage.removeItem('access_token');
+          window.location.replace('index.php');
         })
       }
     }
@@ -201,4 +229,5 @@ margin-left: -15px;
       }
     });
   </script>
+    <?php include './partials/footer2.php' ?>
 </body>

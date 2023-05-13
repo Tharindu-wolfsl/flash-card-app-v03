@@ -32,26 +32,27 @@ if (isset($_POST['submit'])) {
             margin: 0;
             padding: 0;
             font-family: var(--font-poppins);
+            font-size: 12px;
         }
 
         .signup-box {
             width: 100%;
-            max-width: 510px;
+            max-width: 600px;
             margin: -25px auto;
             background-color: #fff;
-            padding: 20px;
+            padding: 0 40px;
             border-radius: 25px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             position: relative;
-            top: 100px;
+            top: 6rem;
+            padding-bottom: 1rem;
+
         }
 
-        .signup-box img {
+        .signup-box .logo {
             display: block;
             margin: 0 auto;
-            width: 200px;
-
-            margin-top: 20px;
+            width: 16rem;
         }
 
         .signup-box h1 {
@@ -66,9 +67,6 @@ if (isset($_POST['submit'])) {
         .signup-box input[type="password"],
         .signup-box input[type="submit"] {
             width: 100%;
-            max-width: 470px;
-
-
         }
 
         .signup-box label {
@@ -79,10 +77,9 @@ if (isset($_POST['submit'])) {
         .signup-box input[type="text"],
         .signup-box input[type="email"],
         .signup-box input[type="password"] {
-            border: 2px solid #045a4f !important;
+            border: 1px solid #045a4f !important;
             border-radius: 30px !important;
-            padding: 15px !important;
-            margin-bottom: 20px;
+            padding: 12px !important;
             outline: none;
         }
 
@@ -181,6 +178,8 @@ if (isset($_POST['submit'])) {
             margin-bottom: 0 !important;
             width: fit-content;
             width: unset !important;
+            font-weight: 500;
+            font-size: small;
 
         }
 
@@ -191,10 +190,10 @@ if (isset($_POST['submit'])) {
 
         .eyelogo {
             position: absolute;
-            top: 1.9rem;
-            width: 1.6rem !important;
-            right: 1rem;
+            top: 2.4rem;
+            width: 1.4rem !important;
             cursor: pointer;
+            right: 1.7rem;
         }
 
         .form-check-input {
@@ -203,64 +202,110 @@ if (isset($_POST['submit'])) {
             margin-top: 0;
             padding: 0.5rem;
         }
+
+        .signup-box form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .email-field,
+        .password-field,
+        .name-field {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 0rem;
+            margin-bottom: 1rem;
+
+        }
+
+        .subject-field {
+            width: 100%;
+            padding: 0 35px;
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field input[type=password] {
+            margin-bottom: 0;
+        }
+
+        .password-field .p-msg {
+            color: darkgray;
+        }
+
+        .signup-box .submit {
+            padding: 0.6rem 8rem;
+        }
+
+        .signup-box form .errors {
+            position: absolute;
+            left: 15px;
+            top: 80px;
+        }
+
+        .selects {
+            margin-top: 0;
+        }
     </style>
 </head>
 
 <body>
-<?php include './partials/header2.php' ?>
+    <?php include './partials/header2.php' ?>
     <div class="signup-box">
-        <img src="./assets/images/logo1.jpg">
+        <img src="./assets/images/logo1.jpg" class="logo">
 
         <form method="post" action="process_form.php">
-            <label class="" for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="Enter Your Name">
-            <span style="color:red;" class="name-error"></span>
-
-            <label class="" for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter Your Email">
-            <span style="color:red;" class="email-error"></span>
-
-            <div class="passwordfield">
+            <div class="name-field">
+                <label class="" for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter Your Name">
+                <span style="color:red;" class="errors name-error"></span>
+            </div>
+            <div class="email-field">
+                <label class="" for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter Your Email">
+                <span style="color:red;" class="errors email-error"></span>
+            </div>
+            <div class="password-field">
                 <label class="" for="password">Password</label>
                 <input type="password" name="password" id="password" placeholder="Enter Password">
+                <span class="p-msg align-self-start mt-2">(Enter a 8 or more characters long password)</span>
                 <img src="./assets/icons/eye1.png" class="eyelogo">
-                <span style="color:red;" class="password-error"></span>
+                <span style="color:red;" class="errors password-error"></span>
             </div>
-            <!-- <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter Password"> -->
-
-
-            <!-- Rest of the code -->
-        </form>
-
-        <center><label class="selects mb-3">Select your Subject</label></center>
-
-        <div class="checkbox-group d-flex justify-content-between mx-auto align-items-center">
-            <div class="inline-checkbox chem-error d-flex align-items-center ">
-                <input class="subjects form-check-input me-2" type="checkbox" name="chemistry" id="chemistry" value="1">
-                <label for="chemistry">Chemistry</label>
+            <label class="selects mb-3">Select your Subject</label>
+            <div class="checkbox-group d-flex justify-content-between mx-auto align-items-center subject-field flex-wrap">
+                <div class="inline-checkbox chem-error d-flex align-items-center ">
+                    <input class="subjects form-check-input me-2" type="checkbox" name="chemistry" id="chemistry" value="1">
+                    <label for="chemistry">Chemistry</label>
+                </div>
+                <div class="inline-checkbox maths-error d-flex align-items-center">
+                    <input class="subjects form-check-input me-2" type="checkbox" name="maths" id="maths" value="2">
+                    <label for="maths">Maths</label>
+                </div>
+                <div class="inline-checkbox phy-errorx d-flex align-items-center">
+                    <input class="subjects form-check-input me-2" type="checkbox" name="physics" id="physics" value="3">
+                    <label for="physics">Physics</label>
+                </div>
+                <div class="inline-checkbox bio-error d-flex align-items-center text-center">
+                    <input class="subjects form-check-input me-2" type="checkbox" name="biology" id="biology" value="4">
+                    <label for="biology">Biology</label>
+                </div>
             </div>
-            <div class="inline-checkbox maths-error d-flex align-items-center">
-                <input class="subjects form-check-input me-2" type="checkbox" name="maths" id="maths" value="2">
-                <label for="maths">Maths</label>
+            <div class="checkbox d-flex justify-content-center align-items-center privacy-field mt-4">
+                <input class="form-check-input" type="checkbox" name="privacy_policy" id="privacy_policy" required>
+                <label class="privacy" for="privacy_policy">I HAVE READ, UNDERSTOOD AND ACCEPTED THE PRIVACY POLICY</label>
             </div>
-            <div class="inline-checkbox phy-errorx d-flex align-items-center">
-                <input class="subjects form-check-input me-2" type="checkbox" name="physics" id="physics" value="3">
-                <label for="physics">Physics</label>
+            <button class="my-4 btn submit rounded-pill" id="form-submit" type="button" name="submit">SIGN UP</button>
+            <div class="sign-up">
+                Already have an account? <a href="index.php">Sign in</a>
             </div>
-            <div class="inline-checkbox bio-error d-flex align-items-center text-center">
-                <input class="subjects form-check-input me-2" type="checkbox" name="biology" id="biology" value="4">
-                <label for="biology">Biology</label>
-            </div>
-        </div>
-        <div class="checkbox d-flex justify-content-center align-items-center">
-            <input class="form-check-input" type="checkbox" name="privacy_policy" id="privacy_policy" required>
-            <label class="privacy" for="privacy_policy">I HAVE READ, UNDERSTOOD AND ACCEPTED THE PRIVACY POLICY</label>
-        </div>
-       <button class="my-4 btn submit rounded-pill w-100 py-2" id="form-submit" type="button" name="submit">SIGN UP</button>
-        <div class="sign-up">
-            Already have an account? <a href="index.php">Sign in</a>
-        </div>
         </form>
     </div>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
@@ -342,6 +387,7 @@ if (isset($_POST['submit'])) {
             }
         });
     </script>
+    <?php include './partials/footer2.php' ?>
 </body>
 
 </html>
