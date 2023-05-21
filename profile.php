@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="./style.css">
     <?php include './partials/requirements.php' ?>
     <script src="./js/auth.js"></script>
-   
+
 </head>
 
 <body>
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
     <div class="container">
-        <div class="my-profile text-center  h3"style="margin-top:80px;" >
+        <div class="my-profile text-center  h3" style="margin-top:80px;">
             <span class="profile-title">My Profile</span>
             <div class="hl"></div>
             <div class="row row-md section-row">
                 <div class="col-xl-6 col-lg-7 col-md-9 mx-md-auto col-sm-12">
                     <div class="profile-card d-sm-flex justify-content-between align-items-center  mx-sm-auto">
                         <div class="profile-pic" id="profile-letter">
-                            
+
                         </div>
                         <div class="contact-details ">
                             <span class="contact-titles my-2">YOUR NAME</span>
@@ -51,40 +51,44 @@
         </div>
     </div>
     <?php include './partials/footer.php' ?>
-   
+
 </body>
+
 </html>
 
 <style>
+    .nav-set {
+        min-height: 300px;
+    }
 
-    .nav-set{
-            min-height: 300px;
-    } 
     .section-row {
         margin-top: 100px;
     }
 
 
-    .nav-tab .nav-link{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            line-height: 60px;
-            font-size: 18px;
-            padding-inline: 40px;
-            font-weight: 400;
+    .nav-tab .nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 60px;
+        font-size: 18px;
+        padding-inline: 40px;
+        font-weight: 400;
     }
 
-    .nav-set .pill-1{
-        background-color:rgb(20, 79, 76);
+    .nav-set .pill-1 {
+        background-color: rgb(20, 79, 76);
     }
-    .nav-set .pill-2{
-        background-color:rgb(20, 79, 76);
-    } 
-    .nav-set .pill-3{
-        background-color:#E83167;
-    } 
-    .subjects .subject{
+
+    .nav-set .pill-2 {
+        background-color: rgb(20, 79, 76);
+    }
+
+    .nav-set .pill-3 {
+        background-color: #E83167;
+    }
+
+    .subjects .subject {
         font-size: 12px;
         background-color: #ffffff75;
         margin-right: 4px;
@@ -94,19 +98,27 @@
         border-radius: 8px;
         color: black;
     }
-    .contact-titles{
+
+    .contact-titles {
         font-size: 18px;
         color: #ffffffc7;
     }
-    .contact-details{
+
+    .contact-details {
         display: flex;
         flex-direction: column;
         right: 0;
         align-items: flex-start;
         color: white;
+        margin-left: 1rem;
     }
-    .profile-card{
-        background-color:rgb(20, 79, 76);
+
+    .contact-details #card-name {
+        text-align: left;
+    }
+
+    .profile-card {
+        background-color: rgb(20, 79, 76);
         position: relative;
         padding-inline: 30px;
         padding-top: 30px;
@@ -114,52 +126,58 @@
         min-height: 300px;
         border-radius: 40px;
     }
-    @media (max-width: 575.98px) { 
-        .profile-card{
-        width: 100%;
-    }
-    .profile-pic{
-        margin: 3px auto;
-    }
-    
-    .vl{
-        display: none !important;
-    }
-    .section-row {
-        margin-top: 20px;
-    }
-    
-     }
 
-    @media (max-width: 991.98px) { 
-        .profile-card{
-        width: 100%;
-        margin: 3px auto;
+    @media (max-width: 575.98px) {
+        .profile-card {
+            width: 100%;
+        }
+
+        .profile-pic {
+            margin: 3px auto;
+            max-width: 15rem;
+            line-height: 15rem;
+        }
+
+        .vl {
+            display: none !important;
+        }
+
+        .section-row {
+            margin-top: 20px;
+        }
+
     }
-    
-    .vl{
-        display: none !important;
+
+    @media (max-width: 991.98px) {
+        .profile-card {
+            width: 100%;
+            margin: 3px auto;
+        }
+
+        .vl {
+            display: none !important;
+        }
+
+        .section-row {
+            margin-top: 20px;
+        }
+
     }
-    .section-row {
-        margin-top: 20px;
-    }
-    
-}
 
 
-    .profile-pic{
+    .profile-pic {
         position: relative;
-        background-color:white ;
+        background-color: white;
         color: rgb(20, 79, 76);
         text-align: center;
-        width: 180px;
-        height: 180px;
+        min-width: 15rem;
         border-radius: 50%;
-        line-height: 180px;
+        line-height: 15rem;
         font-weight: 700;
         font-size: 108px;
     }
-    .profile-pic::after{
+
+    .profile-pic::after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -167,53 +185,56 @@
         height: 40px;
         background-color: #26E564;
         border-radius: 50%;
-        
+
     }
-    
-    body{
+
+    body {
         background: url('./assets/images/background.jpg');
-        background-position:center;
+        background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
         width: 100%;
     }
 
-    .profile-title{
+    .profile-title {
         font-weight: 700;
-        
+
     }
-    .vl{
+
+    .vl {
         height: 300px;
         display: block;
         width: 2px;
-        background-color:#00000066;
+        background-color: #00000066;
         margin: 0 auto;
     }
-    .hl{
+
+    .hl {
         width: 80px;
         margin: 10px auto;
         height: 8px;
         background-color: rgb(20, 79, 76);
     }
 
-    ul{
+    ul {
         text-decoration: none;
         padding: 0;
         margin: 0;
         border: none;
     }
-    li{
+
+    li {
         list-style: none;
         padding: 0;
         margin: 0;
         text-decoration: none;
     }
-     .nav-set a{
+
+    .nav-set a {
         padding: 0;
         margin: 0;
         text-decoration: none;
         color: black;
     }
-
 </style>

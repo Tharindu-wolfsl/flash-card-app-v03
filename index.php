@@ -152,6 +152,7 @@
       color: #808080;
       text-decoration: none;
       margin-right: 2rem;
+      margin-top: 0.7rem;
     }
 
     .lock {

@@ -12,7 +12,7 @@
 <style>
     .header-section {
         position: relative;
-        min-height: 350px;
+        min-height: 300px;
         width: 100%;
         text-align: center;
     }

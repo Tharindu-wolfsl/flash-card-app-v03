@@ -15,40 +15,66 @@
     <div class="container">
         <div class="card  ms-auto col-lg-6 col-md-8 col-sm-12">
             <div class="card-body  d-flex flex-column align-items-center justify-content-center">
-                <h5 class="card-title">QUESTION</h5>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod. Cupiditate, consequuntur non. Aut voluptas, sequi fugiat veritatis nulla deserunt eum ex? Magni laboriosam soluta cupiditate!</p>
+                <h5 class="card-title" id="card-title-id">QUESTION</h5>
+                <p class="card-text" id="card-text-id">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod. Cupiditate, consequuntur non. Aut voluptas, sequi fugiat veritatis nulla deserunt eum ex? Magni laboriosam soluta cupiditate!</p>
             </div>
         </div>
     </div>
 
     <?php include './partials/footer.php' ?>
     <script src="./js/auth.js"></script>
+    <script>
+        window.onload = () => {
+            let q_id = null;
+            const access_token = JSON.parse(localStorage.getItem('access_token'));
+            let queryString = window.location.search;
+            let urlParams = new URLSearchParams(queryString);
+            q_id = urlParams.get('id');
+
+            axios.get('http://fca.systemiial.com/api/get-card', {
+                params: {
+                    token: access_token,
+                    type: 'subject',
+                    id: q_id
+                }
+            }).then(response => {
+                console.log("quection-data", response.data.data.name);
+                if (response.data.data) {
+                    document.getElementById("card-text-id").innerText = response.data.data.description;
+                    document.getElementById("card-title-id").innerText = response.data.data.name;
+                }
+
+            })
+        }
+    </script>
 </body>
 
 </html>
 
 <style>
-
-    .card{
+    .card {
         margin-top: 80px;
         min-height: 450px;
         border-radius: 40px 40px 40px 0px;
-        background-color:  rgb(20, 79, 76);
+        background-color: rgb(20, 79, 76);
         color: white;
         padding: 40px 50px 60px 40px;
-        }
-        .card-title{
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            font-weight: 700;
-        }
-        .card-text{
-            text-align: left;
-            font-size: 20px;
-            letter-spacing: 1px;
-            font-weight: 100;
-        }
+    }
+
+    .card-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .card-text {
+        text-align: left;
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-weight: 100;
+    }
+
     body {
         background: url('./assets/images/quec-bg.png');
         background-position: left;
@@ -58,11 +84,12 @@
         width: 100%;
         background-color: #E6DEDC;
     }
-    @media (max-width: 991.98px) { 
-        body{
-        background-position: center;
-        background-size: cover;
+
+    @media (max-width: 991.98px) {
+        body {
+            background-position: center;
+            background-size: cover;
         }
-        
-     }
+
+    }
 </style>

@@ -219,7 +219,7 @@ if (isset($_POST['submit'])) {
             flex-direction: column;
             align-items: center;
             margin-top: 0rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
 
         }
 
@@ -247,7 +247,7 @@ if (isset($_POST['submit'])) {
         .signup-box form .errors {
             position: absolute;
             left: 15px;
-            top: 80px;
+            top: 69px;
         }
 
         .selects {
@@ -275,7 +275,7 @@ if (isset($_POST['submit'])) {
             <div class="password-field">
                 <label class="" for="password">Password</label>
                 <input type="password" name="password" id="password" placeholder="Enter Password">
-                <span class="p-msg align-self-start mt-2">(Enter a 8 or more characters long password)</span>
+                <span class="p-msg align-self-start mt-3">(Enter a 8 or more characters long password)</span>
                 <img src="./assets/icons/eye1.png" class="eyelogo">
                 <span style="color:red;" class="errors password-error"></span>
             </div>
