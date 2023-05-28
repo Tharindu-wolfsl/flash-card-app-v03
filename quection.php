@@ -30,11 +30,12 @@
             let queryString = window.location.search;
             let urlParams = new URLSearchParams(queryString);
             q_id = urlParams.get('id');
+            type = urlParams.get('type');
 
             axios.get('http://fca.systemiial.com/api/get-card', {
                 params: {
                     token: access_token,
-                    type: 'subject',
+                    type: type,
                     id: q_id
                 }
             }).then(response => {

@@ -27,13 +27,13 @@
                         </div>
                         <div class="my-3 otp-input-set form-inputs">
                             <div class="otp-input">
-                                <input type="text" maxlength="1">
-                                <input type="text" maxlength="1">
-                                <input type="text" maxlength="1">
-                                <input type="text" maxlength="1">
+                                <input type="text" maxlength="1" class="otp-feild otp1">
+                                <input type="text" maxlength="1" class="otp-feild otp2">
+                                <input type="text" maxlength="1" class="otp-feild otp3">
+                                <input type="text" maxlength="1" class="otp-feild otp4">
                             </div>
                         </div>
-                        <button type="submit" class="btn submit rounded-pill w-100">continue</button>
+                        <button type="button" onclick="submitOtp()" class="btn submit rounded-pill w-100" >continue</button>
                     </form>
                     <div class="my-3 otp-resend">
                         <label for="">Didn’t received the code?<a  href="#">Resend Code</a></label>
@@ -47,9 +47,20 @@
     <script>
       const cancelButton = document.querySelector('.cancel');
       cancelButton.addEventListener('click', function() {
-
         alert('OTP sending has been canceled.');
       });
+
+      async function submitOtp(){
+        let otpFeilds = document.querySelectorAll('.otp-feild');
+        let otp = [];
+
+        otpFeilds.forEach((input)=>{
+            otp.push(input.value);
+        });
+
+        // console.log("otp-fields",otp);
+        window.location.replace('./waiting.php')
+      }
     </script>
 </body>
 

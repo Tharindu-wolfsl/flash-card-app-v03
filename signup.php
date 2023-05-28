@@ -352,7 +352,7 @@ if (isset($_POST['submit'])) {
                     $('.name-error').text(``);
                     $('.email-error').text(``);
                     $('.password-error').text(``);
-                    window.location.replace("index.php");
+                    window.location.replace("otp.php");
                     // alert("response", response);
                 }).catch(e => {
                     if (e.response.data) {

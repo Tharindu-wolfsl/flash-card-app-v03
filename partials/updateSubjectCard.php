@@ -4,36 +4,37 @@
         <form class="w-100">
             <div class="my-3">
                 <label for="exampleInputEmail1" class="form-label mb-2  b-text">Name</label>
-                <input class="border border-success rounded-pill w-100" type="text" class="form-control" id="exampleInputEmail1" placeholder="Name">
+                <input class="border border-success rounded-pill w-100" type="text" class="form-control" id="name" placeholder="Name">
+                <span style="color:red;" class="name-error"></span>
             </div>
-            <div class="my-3">
+            <!-- <div class="my-3">
                 <label for="exampleInputEmail1" class="form-label mb-2  b-text">Your email</label>
                 <input class="border border-success rounded-pill w-100" type="email" class="form-control" id="exampleInputEmail1" placeholder="youremail@gmail.com">
-            </div>
+            </div> -->
             <div class="my-3 form-checks">
                 <div class="check-container w-100 d-flex flex-column justify-content-center align-items-center">
                     <span class="check-title mb-3 b-text">Select your subjects</span>
                     <div class="checkboxes col-md-8 p-1 d-flex flex-column">
                         <div class="row row-1 my-2">
-                            <div class="check-box col d-flex justify-content-start"> <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <div class="check-box col d-flex justify-content-start"> <input type="checkbox" name="chemistry" class="form-check-input" id="chemistry">
                                 <label class="form-check-label ms-2" for="exampleCheck1"><small>Chemistry</small> </label>
                             </div>
-                            <div class="check-box col d-flex justify-content-end"> <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <div class="check-box col d-flex justify-content-end"> <input type="checkbox" name="physics" class="form-check-input" id="physics">
                                 <label class="form-check-label ms-2" for="exampleCheck1"><small>Physics</small> </label>
                             </div>
                         </div>
                         <div class="row row-2 my-2">
-                            <div class="check-box col d-flex justify-content-start"> <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <div class="check-box col d-flex justify-content-start"> <input type="checkbox" name="maths" class="form-check-input" id="maths">
                                 <label class="form-check-label ms-2" for="exampleCheck1"><small>Maths</small> </label>
                             </div>
-                            <div class="check-box col d-flex justify-content-end "> <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <div class="check-box col d-flex justify-content-end "> <input type="checkbox" name="biology" class="form-check-input" id="biology">
                                 <label class="form-check-label ms-2" for="exampleCheck1"><small>Biology</small> </label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn submit rounded-pill w-100">SAVE</button>
+            <button id="form-submit" type="button" class="btn submit rounded-pill w-100">SAVE</button>
         </form>
     </div>
 </div>
@@ -67,7 +68,7 @@
         background-position: center;
         background-repeat: no-repeat;
         height: 100px;
-        width: 100%;
+        width: 70%;
     }
 
     .rounded-pill {

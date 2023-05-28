@@ -16,8 +16,8 @@
     <?php include './partials/navbar.php' ?>
     <?php include './partials/headersection.php' ?>
     <div class="container">
-        <div class="card-section my-5">
-            <h3 class="card-sec-title text-center mb-3">
+        <div class="card-section my-4 pb-5">
+            <h3 class="card-sec-title text-center mb-4">
                 SELECT <span>A CARD</span> TO PLAY
             </h3>
             <div class="cards-set row mx-auto gy-3 gx-4">
@@ -63,15 +63,17 @@
 
                 subjects = response.data.data.subjects;
                 subjects.forEach(subject => {
-                    template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
-                <div class="subject-card col mx-auto"><span class="card-header">${subject.name}</span>
+                    if(subject.registered =="1"){
+                        template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
+                <div class="subject-card col mx-auto"><span class="card-header  rotate">${subject.name}</span>
                     <div class="card-content d-flex">
-                        <button  class="btn play">Play Deck</button>
+                        <a href="./quection.php?id=${subject.id}?type=subject" class="btn view play">Play Deck</a>
                         <span class="subject-vl"></span>
                         <button onClick="getModuleBySubject(${subject.id})" class="btn view">View Sub Deck</button>
                     </div></div>    
                 </div>`;
                     $('.cards-set').append(template);
+                    } 
                 })
             })
 
@@ -95,9 +97,9 @@
                     $('.s-card').remove();
                     modules.forEach(module => {
                         template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
-                <div class="subject-card col mx-auto"><span class="card-header">${module.name}</span>
+                <div class="subject-card col mx-auto"><span class="card-header  rotate">${module.name}</span>
                     <div class="card-content d-flex">
-                        <button  class="btn play">Play Deck</button>
+                    <a href="./quection.php?id=${module.id}?type=module" class="btn view play">Play Deck</a>
                         <span class="subject-vl"></span>
                         <button class="btn view" onClick="getTopicsByModule(${module.id})">View Sub Deck</button>
                     </div></div>    
@@ -126,9 +128,9 @@
                     $('.s-card').remove();
                     modules.forEach(module => {
                         template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
-                <div class="subject-card col mx-auto"><span class="card-header">${module.name}</span>
+                <div class="subject-card col mx-auto"><span class="card-header rotate">${module.name}</span>
                     <div class="card-content d-flex">
-                        <button onClick="getTopicsByModule(${module.id})" class="btn play">Play Deck</button>
+                    <a href="./quection.php?id=${module.id}?type=topic" class="btn view play">Play Deck</a>
                     </div></div>    
                 </div>`;
                         $('.cards-set').append(template);
@@ -136,6 +138,7 @@
                 }
             })
         }
+
     </script>
 </body>
 
@@ -143,11 +146,13 @@
 <style>
     .cards-set {
         margin-top: 1rem;
+        padding-inline: 6.5rem;
     }
 
     .card-sec-title {
         position: relative;
         font-weight: 700;
+        font-size: 20px;
     }
 
     .card-sec-title span {
@@ -160,7 +165,7 @@
         justify-content: center;
         align-items: center;
         height: 100%;
-        padding-left: 5rem;
+        padding-left: 3rem;
     }
 
     .card-content .btn {
@@ -183,14 +188,14 @@
         color: white;
         border-radius: 50px 40px 0px 50px;
         box-sizing: border-box;
-        min-height: 13rem;
+        min-height: 10rem;
     }
 
     .subject-card::before {
         position: absolute;
         left: 0;
         content: "";
-        width: 70px;
+        width: 50px;
         padding-left: 0;
         height: 100%;
         border-radius: 50px 0px 0px 50px;
@@ -201,20 +206,27 @@
 
     .subject-card .card-header {
         position: absolute;
-        transform: rotate(-90deg);
+        width: 8rem;
+        top: 50%;
         background-color: transparent;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 700;
         padding: 0;
-        top: 40%;
-        left: -1%;
-        max-height: 3rem;
         word-break: break-all;
+        border: none;
+        text-align: center;
+        left: 0;
     }
 
-    .cards-set :first-child .subject-card .card-header {
-        left: -4%;
+    .subject-card .rotate {
+        -moz-transform: translateX(-30%) translateY(-50%) rotate(-90deg);
+        -webkit-transform: translateX(-30%) translateY(-50%) rotate(-90deg);
+        transform: translateX(-30%) translateY(-50%) rotate(-90deg);
     }
+
+    /* .cards-set :first-child .subject-card .card-header {
+        left: -4%;
+    } */
 
     body {
         background: url('./assets/images/background.jpg');
@@ -227,6 +239,6 @@
 
     .play,
     .view {
-        font-size: 18px;
+        font-size: 12px;
     }
 </style>

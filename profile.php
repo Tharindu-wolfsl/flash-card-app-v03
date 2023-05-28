@@ -15,13 +15,13 @@
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
     <div class="container">
-        <div class="my-profile text-center  h3" style="margin-top:80px;">
+        <div class="my-profile text-center  h3" style="margin-top:3rem;">
             <span class="profile-title">My Profile</span>
             <div class="hl"></div>
             <div class="row row-md section-row">
                 <div class="col-xl-6 col-lg-7 col-md-9 mx-md-auto col-sm-12">
-                    <div class="profile-card d-sm-flex justify-content-between align-items-center  mx-sm-auto">
-                        <div class="profile-pic" id="profile-letter">
+                    <div class="profile-card d-sm-flex justify-content-left align-items-center  mx-sm-auto">
+                        <div class="profile-pic me-sm-3" id="profile-letter">
 
                         </div>
                         <div class="contact-details ">
@@ -42,27 +42,43 @@
                 </div>
                 <div class="col-xl-5 col-lg-4">
                     <ul class="nav-set d-flex flex-column justify-content-evenly align-items-start">
-                        <li class="nav-tab nav-item w-100"><a href="./updateProfile.php" class="nav-link  rounded-pill pill-1 text-light">EDIT PROFILE <span class="i bi bi-chevron-right mx-1"></span></a></li>
+                        <li class="nav-tab nav-item w-100"><a href="./updateSubject.php" class="nav-link  rounded-pill pill-1 text-light">EDIT PROFILE <span class="i bi bi-chevron-right mx-1"></span></a></li>
                         <li class="nav-tab nav-item w-100 "><a href="./resetpassword.php" class="nav-link  rounded-pill pill-2 text-light">CHANGE PASSWORD <span class="i bi bi-chevron-right mx-1"></span></a></li>
-                        <li class="nav-tab nav-item w-100 "><a href="#" class="nav-link  rounded-pill pill-3 text-light">DELETE ACCOUNT <span class="i bi bi-chevron-right mx-1"></span></a></li>
+                        <li class="nav-tab nav-item w-100 "><button type="button" id onclick="deleteAccount()" class="nav-link btn rounded-pill pill-3 text-light w-100">DELETE ACCOUNT <span class="i bi bi-chevron-right mx-1 delete-acc"></span></button></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <?php include './partials/footer.php' ?>
+    <script>
+        function deleteAccount() {
+            const access_token = JSON.parse(localStorage.getItem('access_token'));
+                axios.get('http://fca.systemiial.com/api/delete-account', {
+                    params: {
+                        token: access_token
+                    }
+                }).then(res => {
+                    if (res.data) {
+                        localStorage.removeItem("access_token");
+                        window.location.replace("./index.php");
+                    }
+                })
+        }
+    </script>
 
 </body>
 
 </html>
 
 <style>
+
     .nav-set {
         min-height: 300px;
     }
 
     .section-row {
-        margin-top: 100px;
+        margin-top: 3rem;
     }
 
 
@@ -71,9 +87,12 @@
         justify-content: space-between;
         align-items: center;
         line-height: 60px;
-        font-size: 18px;
+        font-size: 16px;
         padding-inline: 40px;
         font-weight: 400;
+    }
+    span#card-email , span#card-name{
+        font-size: 24px;
     }
 
     .nav-set .pill-1 {
@@ -143,7 +162,7 @@
         }
 
         .section-row {
-            margin-top: 20px;
+            margin-top: 3rem;
         }
 
     }
@@ -162,6 +181,10 @@
             margin-top: 20px;
         }
 
+        .my-profile {
+            padding-inline: 0 !important;
+        }
+
     }
 
 
@@ -170,9 +193,9 @@
         background-color: white;
         color: rgb(20, 79, 76);
         text-align: center;
-        min-width: 15rem;
+        min-width: 13rem;
         border-radius: 50%;
-        line-height: 15rem;
+        line-height: 13rem;
         font-weight: 700;
         font-size: 108px;
     }
@@ -231,10 +254,15 @@
         text-decoration: none;
     }
 
-    .nav-set a {
+    .nav-set a,
+    .nav-set button {
         padding: 0;
         margin: 0;
         text-decoration: none;
         color: black;
+    }
+
+    .my-profile {
+        padding-inline: 3rem;
     }
 </style>

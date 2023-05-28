@@ -5,10 +5,16 @@
                 <span class="text-warning">11 & 12 STUDENTS</span>
                 GET THE BEST OUT OF THEIR STUDIES.
             </p>
-            <button class="btn learn">LEARN MORE</button>
+            <button class="btn learn" onclick="testModal()">LEARN MORE</button>
         </div>
     </div>
 </div>
+<?php include './partials/test-modal.php' ?>
+<script>
+    function testModal(){
+        $('#testModal').modal('show');
+    }
+</script>
 <style>
     .header-section {
         position: relative;
@@ -43,6 +49,10 @@
         line-height: 25px;
         padding: 10px;
         margin-top: 10px;
+    }
+
+    .section-text p{
+        font-size: 24px;
     }
 
 </style>

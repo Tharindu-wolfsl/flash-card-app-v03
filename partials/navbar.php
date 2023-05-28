@@ -1,6 +1,6 @@
-<nav class="navbar navigation-bar navbar-expand-lg navbar-dark py-3 ">
+<nav class="navbar navigation-bar navbar-expand-lg navbar-dark py-2 ">
   <div class="container">
-    <a class="navbar-brand" href="#"><img class="header-logo" src="../assets/images/header-logo.png" alt=""></a>
+    <a class="navbar-brand" href="./selectcard.php"><img class="header-logo" src="../assets/images/header-logo.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,7 +21,7 @@
 </nav>
 <style>
   .line-break {
-    height: 50px;
+    height: 40px;
     border-left: 2px solid #ffffff70;
     margin: auto 5px;
   }
@@ -33,7 +33,10 @@
 
   .nav-link {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 12px;
+    padding: 0;
+    text-align: center;
+    line-height:2.5rem;
   }
   .header-logo{
       width: 50%;

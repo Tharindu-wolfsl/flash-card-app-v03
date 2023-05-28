@@ -24,9 +24,10 @@ $(document).ready(function() {
     $('.profile-card #profile-letter').append(user.name.charAt(0).toUpperCase());
 
     user.subjects.forEach(subject=>{
-      let template = `<span class="subject border-radius-2">${subject.name}</span`
-      $('.contact-details  #card-subject').append(template);
-
+      if (subject.registered == "1") {
+        let template = `<span class="subject border-radius-2">${subject.name}</span`;
+        $(".contact-details  #card-subject").append(template);
+      }
     })
     }else{
         console.log("Authentication failed");

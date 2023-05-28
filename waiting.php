@@ -34,7 +34,7 @@
 		.container img {
 			display: block;
 			margin: 0 auto;
-			max-width: 100%;
+			max-width: 60%;
 			margin-top: -20px;
 			padding-top: 20px;
 			border-top-left-radius: 10px;
@@ -83,5 +83,11 @@
 		<img src="./assets/images/logo1.jpg">
 		<h1>Waiting<span class="dots">...</span></h1>
 	</div>
+
+	<script>
+		setTimeout(()=>{
+			window.location.replace('./index.php');
+		},5000)
+	</script>
 </body>
 </html>
