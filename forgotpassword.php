@@ -156,7 +156,7 @@
     </div>
     <button class="save-button" onclick="forgotPassword()">SEND</button>
     <div class="resend-otp">
-      <span>Didn't received the code?<b> <a href="#" style="color: #045a4f; text-decoration: none;" onclick="forgotPassword">Resend Code</a></b>.</span>
+      <span>Didn't received the code?<b> <a href="#" style="color: #045a4f; text-decoration: none;" onclick="forgotPassword()">Resend Email</a></b>.</span>
     </div>
   </div>
   <script>
