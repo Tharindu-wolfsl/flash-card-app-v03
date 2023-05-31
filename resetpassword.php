@@ -52,7 +52,7 @@
       max-width: 100%;
     }
 
-    .password-boxes{
+    .password-boxes {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -63,7 +63,7 @@
       padding-bottom: 0 !important;
     }
 
-    .password-boxes input[type=password] {
+    .password-boxes input[type=password], .password-boxes input[type=text] {
       width: 100%;
       margin-bottom: 3.5rem;
       padding: 14px;
@@ -151,10 +151,24 @@
     .password-container2 input {
       margin-bottom: 0 !important;
     }
-    .button-box{
+
+    .button-box {
       width: 100%;
       padding: 0 2rem;
-      margin-bottom:3rem;
+      margin-bottom: 3rem;
+    }
+
+    .password-container {
+      position: relative;
+
+    }
+
+    .eyelogo1, .eyelogo2 {
+      position: absolute;
+      top: 1.2rem;
+      width: 1.4rem !important;
+      cursor: pointer;
+      right: 1.2rem;
     }
   </style>
   <!-- <script>
@@ -172,7 +186,7 @@
 </head>
 
 <body>
-<?php include './partials/header2.php' ?>
+  <?php include './partials/header2.php' ?>
   <div class="reset-box">
     <div class="image-box">
       <img class="logo" src="./assets/images/logo1.jpg" alt="Reset Password Image">
@@ -181,16 +195,18 @@
     <div class="password-boxes">
       <div class="password-container">
         <input type="password" id="new-password" placeholder="New Password">
+        <img src="./assets/icons/eye1.png" class="eyelogo1">
         <label for="new-password" class="password-label">(Enter a 8 or more characters long password)</label>
-      </div> 
+      </div>
       <div class="password-container password-container2">
         <input type="password" id="confirm-password" placeholder="Re-enter the new password">
+        <img src="./assets/icons/eye1.png" class="eyelogo2">
         <input type="text" id="confirm-password-text" style="display:none;">
       </div>
       <p id="password-error" class="error"></p>
     </div>
     <div class="button-box">
-    <button class="save-button" onclick="checkPasswordMatch()">SAVE AND SIGN IN</button>
+      <button class="save-button" onclick="checkPasswordMatch()">SAVE AND SIGN IN</button>
     </div>
     <p id="set-password-error" class="error" style="display:none;">Passwords do not match</p>
   </div>
@@ -228,6 +244,28 @@
         checkPasswordMatch();
       }
     });
+
+    var passwordField1 = document.getElementById("new-password");
+    var showPasswordBtn1 = document.querySelector(".eyelogo1");
+    showPasswordBtn1.addEventListener("click", function() {
+      //console.log("work");
+      if (passwordField1.type === "password") {
+        passwordField1.type = "text";
+      } else {
+        passwordField1.type = "password";
+      }
+    });
+
+    var passwordField2 = document.getElementById("confirm-password");
+    var showPasswordBtn2 = document.querySelector(".eyelogo2");
+    showPasswordBtn2.addEventListener("click", function() {
+      //console.log("work");
+      if (passwordField2.type === "password") {
+        passwordField2.type = "text";
+      } else {
+        passwordField2.type = "password";
+      }
+    });
   </script>
-    <?php include './partials/footer2.php' ?>
+  <?php include './partials/footer2.php' ?>
 </body>

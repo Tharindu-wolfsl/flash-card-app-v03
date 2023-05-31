@@ -19,13 +19,19 @@
                 <p class="card-text" id="card-text-id">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod. Cupiditate, consequuntur non. Aut voluptas, sequi fugiat veritatis nulla deserunt eum ex? Magni laboriosam soluta cupiditate!</p>
             </div>
         </div>
+        <div class="mt-1 ms-auto col-lg-6 col-md-8 col-sm-12">
+            <button class="btn btn-dark rounded-pill px-4 py-2 text-center w-100" onclick="showAnswer()">Show Answer</button>
+        </div>
     </div>
-
+    <?php include './partials/test-modal.php' ?>
     <?php include './partials/footer.php' ?>
     <script src="./js/auth.js"></script>
+
     <script>
+        let q_id = null;
+        let type = '';
         window.onload = () => {
-            let q_id = null;
+
             const access_token = JSON.parse(localStorage.getItem('access_token'));
             let queryString = window.location.search;
             let urlParams = new URLSearchParams(queryString);
@@ -39,13 +45,39 @@
                     id: q_id
                 }
             }).then(response => {
-                console.log("quection-data", response.data.data.name);
                 if (response.data.data) {
-                    document.getElementById("card-text-id").innerText = response.data.data.description;
-                    document.getElementById("card-title-id").innerText = response.data.data.name;
+                    document.getElementById("card-text-id").innerText = removeHtmlTags(response.data.data.description);
+                    document.getElementById("card-title-id").innerText = removeHtmlTags(response.data.data.name);
+                } else {
+                    $('#testModal').modal('show');
+                    document.getElementById("error-text").innerText = response.data.message;
                 }
-
             })
+        }
+
+        function showAnswer() {
+            window.location.replace(`./answers.php?id=${q_id}&type=${type}`);
+        }
+
+        // Get the button element
+        var doneButton = document.getElementById('modal-done');
+        var closeButton = document.getElementById('modal-close');
+
+        doneButton.addEventListener('click', function() {
+            window.location.replace('./selectcard.php');
+        });
+
+        closeButton.addEventListener('click', function() {
+            window.location.replace('./selectcard.php');
+        });
+
+        function removeHtmlTags(text) {
+            if(text!=null){
+                return text.replace(/<[^>]*>/g, '');
+            }else{
+                return '';
+            }
+
         }
     </script>
 </body>

@@ -9,7 +9,7 @@
         <p class="text-success text-center mx-auto h3">Forgot password email sent successfully!</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success mx-auto text-light" onclick="closeModal()">Done!</button>
+        <a href="../index.php" class="btn btn-success mx-auto text-light">Done!</a>
       </div>
     </div>
   </div>

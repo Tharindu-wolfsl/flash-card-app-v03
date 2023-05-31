@@ -13,31 +13,96 @@
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
     <div class="answer-bg">
-    <div class="container">
-        <div class="card  ms-auto col-lg-5 mt-5 col-md-8 col-sm-12 mb-3">
-            <div class="card-body  d-flex flex-column align-items-center justify-content-center">
-                <span class="card-title">ANSWER</span>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod.</p>
-                <div class="answers mt-4 col-sm-10 d-flex flex-column">
-                    <button class="btn rounded-pill answer answer-perfect"><img src="./assets/icons/perfect.png" alt=""><span>PERFECT</span><span class="time ms-auto">1&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-poor"><img src="./assets/icons/poor-new.png" alt=""><span>POOR</span><span class="time ms-auto">8&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-good"><img src="./assets/icons/good-new.png" alt=""><span>GOOD</span><span class="time ms-auto">10&nbsp;min</span></button>
-                    <button class="btn rounded-pill answer answer-repeat"><img src="./assets/icons/repeat-new.png" alt=""><span>REPEAT</span><span class="time ms-auto">4&nbsp;days</span></button>
+        <div class="container">
+            <div class="card  ms-auto col-lg-5 mt-5 col-md-8 col-sm-12 mb-3">
+                <div class="card-body  d-flex flex-column align-items-center justify-content-center">
+                    <span class="card-title">ANSWER</span>
+                    <p class="card-text" id="answer-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod.</p>
+                    <div class="answers mt-4 col-sm-10 d-flex flex-column">
+                        <button class="btn rounded-pill answer answer-perfect" onclick="sendAnswer(5)"><img src="./assets/icons/perfect.png" alt=""><span>PERFECT</span><span class="time ms-auto">1&nbsp;min</span></button>
+                        <button class="btn rounded-pill answer answer-poor" onclick="sendAnswer(1)"><img src="./assets/icons/poor-new.png" alt=""><span>POOR</span><span class="time ms-auto">8&nbsp;min</span></button>
+                        <button class="btn rounded-pill answer answer-good" onclick="sendAnswer(3)"><img src="./assets/icons/good-new.png" alt=""><span>GOOD</span><span class="time ms-auto">10&nbsp;min</span></button>
+                        <button class="btn rounded-pill answer answer-repeat" onclick="sendAnswer(0)"><img src="./assets/icons/repeat-new.png" alt=""><span>REPEAT</span><span class="time ms-auto">4&nbsp;days</span></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-2 ms-auto col-lg-5 col-md-8 col-sm-12">
+            <!-- <div class="mt-2 ms-auto col-lg-5 col-md-8 col-sm-12">
             <button class="btn btn-dark rounded-pill px-4 py-2 text-center w-100">Show Answer</button>
+        </div> -->
         </div>
     </div>
-    </div>
+    <?php include './partials/test-modal.php' ?>
     <?php include './partials/footer.php' ?>
+    <script src="./js/auth.js"></script>
+    <script>
+        let q_id = null;
+        let type = '';
+        let answer = '';
+        let card_id = '';
+        window.onload = () => {
+
+            const access_token = JSON.parse(localStorage.getItem('access_token'));
+            let queryString = window.location.search;
+            let urlParams = new URLSearchParams(queryString);
+            q_id = urlParams.get('id');
+            type = urlParams.get('type');
+
+            axios.get('http://fca.systemiial.com/api/get-card', {
+                params: {
+                    token: access_token,
+                    type: type,
+                    id: q_id
+                }
+            }).then(response => {
+                if (response.data.data) {
+                    document.getElementById("answer-text").innerText = removeHtmlTags(response.data.data.answer);
+                    card_id = response.data.data.id;
+                }
+            })
+        }
+
+        function sendAnswer(answer) {
+            const access_token = JSON.parse(localStorage.getItem('access_token'));
+            axios.get('http://fca.systemiial.com/api/send-answer', {
+                params: {
+                    token: access_token,
+                    card_id: card_id,
+                    answer: answer
+                }
+            }).then(response => {
+                if (response.data) {
+                    $('#testModal').modal('show');
+                    document.getElementById("error-text").innerText = response.data.message;
+                }
+            })
+        }
+
+        // Get the button element
+        var doneButton = document.getElementById('modal-done');
+        var closeButton = document.getElementById('modal-close');
+
+        doneButton.addEventListener('click', function() {
+            window.location.replace('./selectcard.php');
+        });
+
+        closeButton.addEventListener('click', function() {
+            window.location.replace('./selectcard.php');
+        });
+
+        function removeHtmlTags(text) {
+            if(text!=null){
+                return text.replace(/<[^>]*>/g, '');
+            }else{
+                return '';
+            }
+        }
+    </script>
 </body>
 
 </html>
 
 <style>
-    .answer-bg{
+    .answer-bg {
         background: url('./assets/images/ans-bg.png');
         background-size: contain;
         background-repeat: no-repeat;
@@ -46,6 +111,7 @@
         margin-top: 0;
 
     }
+
     .show {
         line-height: 30px;
     }
@@ -86,7 +152,7 @@
         border-radius: 50px 50px 50px 0px;
         background-color: rgb(20, 79, 76);
         color: white;
-        padding: 30px 20px 10px 20px;
+        padding: 30px 20px 30px 20px;
     }
 
     .card-title {
@@ -94,7 +160,7 @@
         margin-bottom: 20px;
         font-size: 28px;
         font-weight: 700;
-        font-family:var(--font-poppins);
+        font-family: var(--font-poppins);
     }
 
     .card-text {
@@ -135,14 +201,13 @@
         border: none;
     }
 
-    .answers img{
+    .answers img {
         margin-right: 5px;
     }
 
-    @media (max-width: 991.98px) {  
-        .answer-bg{
-        background-size: cover;
+    @media (max-width: 991.98px) {
+        .answer-bg {
+            background-size: cover;
+        }
     }
-    }
-
 </style>
