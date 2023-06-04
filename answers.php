@@ -80,9 +80,13 @@
         // Get the button element
         var doneButton = document.getElementById('modal-done');
         var closeButton = document.getElementById('modal-close');
+        let queryString = window.location.search;
+        let urlParams = new URLSearchParams(queryString);
+        q_id = urlParams.get('id');
+        type = urlParams.get('type');
 
         doneButton.addEventListener('click', function() {
-            window.location.replace('./selectcard.php');
+            window.location.replace(`./quection.php?id=${q_id}&type=${type}`);
         });
 
         closeButton.addEventListener('click', function() {

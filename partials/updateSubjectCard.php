@@ -27,7 +27,7 @@
                             <div class="check-box col d-flex justify-content-start"> <input type="checkbox" name="maths" class="form-check-input" id="maths">
                                 <label class="form-check-label ms-2" for="exampleCheck1"><small>Maths</small> </label>
                             </div>
-                            <div class="check-box col d-flex justify-content-end "> <input type="checkbox" name="biology" class="form-check-input" id="biology">
+                            <div class="check-box col d-flex justify-content-end "> <input type="checkbox" name="biology" class="form-check-input" id="biology"  disabled>
                                 <label class="form-check-label ms-2" for="exampleCheck1"><small>Biology</small> </label>
                             </div>
                         </div>

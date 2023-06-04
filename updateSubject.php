@@ -50,10 +50,10 @@
                         if (checked_id == 1) {
                             $('#chemistry').attr('checked', true);
                         }
-                        if (checked_id == 2) {
+                        if (checked_id == 3) {
                             $('#maths').attr('checked', true);
                         }
-                        if (checked_id == 3) {
+                        if (checked_id == 2) {
                             $('#physics').attr('checked', true);
                         }
                         if (checked_id == 4) {
@@ -82,9 +82,9 @@
                     if (subject.name == 'chemistry') {
                         selectedSubjectIds = selectedSubjectIds + "1,"
                     } else if (subject.name == 'maths') {
-                        selectedSubjectIds = selectedSubjectIds + "2,"
-                    } else if (subject.name == 'physics') {
                         selectedSubjectIds = selectedSubjectIds + "3,"
+                    } else if (subject.name == 'physics') {
+                        selectedSubjectIds = selectedSubjectIds + "2,"
                     } else if (subject.name == 'biology') {
                         selectedSubjectIds = selectedSubjectIds + "4,"
                     }

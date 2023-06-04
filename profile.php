@@ -25,15 +25,17 @@
 
                         </div>
                         <div class="contact-details ">
-                            <span class="contact-titles my-2">YOUR NAME</span>
-                            <span id="card-name" class="contatc-data my-2"></span>
-                            <span class="contact-titles my-2">EMAIL ADDRESS</span>
-                            <span id="card-email" class="contatc-data my-2"></span>
-                            <span class="contact-titles my-2">SELECTED SUBJECT</span>
+                            <span class="contact-titles mb-1">YOUR NAME</span>
+                            <span id="card-name" class="contatc-data mb-2"></span>
+                            <span class="contact-titles mb-1">EMAIL ADDRESS</span>
+                            <span id="card-email" class="contatc-data mb-2"></span>
+                            <span class="contact-titles my-1">SELECTED SUBJECT</span>
                             <div id="card-subject" class="subjects d-flex flex-wrap">
+
                                 <!-- <span class="subject border-radius-2"> CHEMISTRY</span>
                                 <span class="subject border-radius-2"> PHYSICS</span> -->
                             </div>
+                            <div class="empty-padding p-2"></div>
                         </div>
                     </div>
                 </div>
@@ -92,7 +94,7 @@
         font-weight: 400;
     }
     span#card-email , span#card-name{
-        font-size: 24px;
+        font-size: 1rem;
     }
 
     .nav-set .pill-1 {
