@@ -55,7 +55,7 @@
                 }
             }).then(response => {
                 if (response.data.data) {
-                    document.getElementById("answer-text").innerText = removeHtmlTags(response.data.data.answer);
+                    document.getElementById("answer-text").innerText = removeHtmlTags(response.data.data.answer ? response.data.data.answer : response.data.data[0].answer);
                     card_id = response.data.data.id;
                 }
             })

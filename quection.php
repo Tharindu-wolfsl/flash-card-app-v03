@@ -13,13 +13,13 @@
     <?php include './partials/header.php' ?>
     <?php include './partials/navbar.php' ?>
     <div class="container">
-        <div class="card  ms-auto col-lg-6 col-md-8 col-sm-12">
+        <div class="card  ms-auto col-lg-5 col-md-8 col-sm-12">
             <div class="card-body  d-flex flex-column align-items-center justify-content-center">
                 <h5 class="card-title" id="card-title-id">QUESTION</h5>
                 <p class="card-text" id="card-text-id">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod. Cupiditate, consequuntur non. Aut voluptas, sequi fugiat veritatis nulla deserunt eum ex? Magni laboriosam soluta cupiditate!</p>
             </div>
         </div>
-        <div class="mt-1 ms-auto col-lg-6 col-md-8 col-sm-12">
+        <div class="mt-1 ms-auto col-lg-5 col-md-8 col-sm-12">
             <button class="btn btn-dark rounded-pill px-4 py-2 text-center w-100" onclick="showAnswer()">Show Answer</button>
         </div>
     </div>
@@ -46,8 +46,9 @@
                 }
             }).then(response => {
                 if (response.data.data) {
-                    document.getElementById("card-text-id").innerText = removeHtmlTags(response.data.data.description);
-                    document.getElementById("card-title-id").innerText = removeHtmlTags(response.data.data.name);
+                    console.log(response.data.data[0]);
+                    document.getElementById("card-text-id").innerText = removeHtmlTags(response.data.data.description ? response.data.data.description : response.data.data[0].description);
+                    document.getElementById("card-title-id").innerText = removeHtmlTags(response.data.data.name ? response.data.data.name : response.data.data[0].name);
                 } else {
                     $('#testModal').modal('show');
                     document.getElementById("error-text").innerText = response.data.message;
@@ -87,11 +88,12 @@
 <style>
     .card {
         margin-top: 80px;
-        min-height: 450px;
+        min-height: 21rem;
         border-radius: 40px 40px 40px 0px;
         background-color: rgb(20, 79, 76);
         color: white;
-        padding: 40px 50px 60px 40px;
+        padding: 2rem 3rem 4rem 2rem;
+;
     }
 
     .card-title {
