@@ -14,9 +14,9 @@
     <?php include './partials/navbar.php' ?>
     <div class="container">
         <div class="card  ms-auto col-lg-5 col-md-8 col-sm-12">
-            <div class="card-body  d-flex flex-column align-items-center justify-content-center">
+            <div class="card-body quection-card  d-flex flex-column align-items-center justify-content-center">
                 <h5 class="card-title" id="card-title-id">QUESTION</h5>
-                <p class="card-text" id="card-text-id">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est perferendis atque perspiciatis aut quod. Cupiditate, consequuntur non. Aut voluptas, sequi fugiat veritatis nulla deserunt eum ex? Magni laboriosam soluta cupiditate!</p>
+                <p class="card-text" id="card-text-id"></p>
             </div>
         </div>
         <div class="mt-1 ms-auto col-lg-5 col-md-8 col-sm-12">
@@ -46,9 +46,13 @@
                 }
             }).then(response => {
                 if (response.data.data) {
-                    console.log(response.data.data[0]);
-                    document.getElementById("card-text-id").innerText = removeHtmlTags(response.data.data.description ? response.data.data.description : response.data.data[0].description);
-                    document.getElementById("card-title-id").innerText = removeHtmlTags(response.data.data.name ? response.data.data.name : response.data.data[0].name);
+                    // document.getElementById("card-text-id").innerText = removeHtmlTags(response.data.data.description ? response.data.data.description : response.data.data[0].description);
+                    if (response.data.data.name) {
+                        document.getElementById("card-text-id").innerText = removeHtmlTags(response.data.data.name ? response.data.data.name : response.data.data[0].name);
+                    } else if (response.data.data.image) {
+                        $('.quection-card').append(`<img src=${response.data.data.image ? response.data.data.image : response.data.data[0].image} id="card-img-id">`);
+                    }
+
                 } else {
                     $('#testModal').modal('show');
                     document.getElementById("error-text").innerText = response.data.message;
@@ -73,9 +77,9 @@
         });
 
         function removeHtmlTags(text) {
-            if(text!=null){
+            if (text != null) {
                 return text.replace(/<[^>]*>/g, '');
-            }else{
+            } else {
                 return '';
             }
 
@@ -93,7 +97,7 @@
         background-color: rgb(20, 79, 76);
         color: white;
         padding: 2rem 3rem 4rem 2rem;
-;
+        ;
     }
 
     .card-title {
