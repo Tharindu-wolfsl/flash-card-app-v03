@@ -21,35 +21,19 @@
                 SELECT <span>A CARD</span> TO PLAY
             </h3>
             <div class="cards-set row mx-auto gy-3 gx-4">
-                <!-- <div class=" col-lg-4 col-md-6 col-sm-12 mx-auto d-flex ">
-                <div class="subject-card col  mx-auto"><span class="card-header">CHEMISTRY</span>
-                    <div class="card-content d-flex">
-                        <button class="btn play">Play Deck</button>
-                        <span class="subject-vl"></span>
-                        <button class="btn view">View Sub Deck</button>
-                    </div></div>    
-                </div>
-                <div class=" col-lg-4 col-md-6 col-sm-12 mx-auto d-flex ">
-                <div class="subject-card col  mx-auto"><span class="card-header">CHEMISTRY</span>
-                    <div class="card-content d-flex">
-                        <button class="btn play">Play Deck</button>
-                        <span class="subject-vl"></span>
-                        <button class="btn view">View Sub Deck</button>
-                    </div></div>    
-                </div>
-                <div class=" col-lg-4 col-md-6 col-sm-12 mx-auto d-flex ">
-                <div class="subject-card col  mx-auto"><span class="card-header">CHEMISTRY</span>
-                    <div class="card-content d-flex">
-                        <button class="btn play">Play Deck</button>
-                        <span class="subject-vl"></span>
-                        <button class="btn view">View Sub Deck</button>
-                    </div></div>    
+                <!-- <div class="empty-modules d-flex justify-content-center">
+                    <span>Modules not found!</span>
+                    <img src="./assets/icons/ban-solid.svg" alt="">
                 </div> -->
             </div>
         </div>
     </div>
     <?php include './partials/footer.php' ?>
     <script>
+        let errorTemplate = `<div class="empty-modules d-flex justify-content-center">
+        <img src="./assets/icons/triangle-exclamation-solid.svg" alt="">
+                    <span>Modules not found!</span>      
+                </div>`;
         window.onload = async () => {
             const access_token = JSON.parse(localStorage.getItem('access_token'));
             await axios.get('http://fca.systemiial.com/api/view-profile', {
@@ -60,11 +44,13 @@
                 let subjects = [];
                 let template = ``;
                 let card_section = document.querySelector('.cards-set');
-
                 subjects = response.data.data.subjects;
-                subjects.forEach(subject => {
-                    if(subject.registered =="1"){
-                        template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
+                if (subjects.length == 0) {
+                    $('.cards-set').append(errorTemplate);
+                } else {
+                    subjects.forEach(subject => {
+                        if (subject.registered == "1") {
+                            template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
                 <div class="subject-card col mx-auto"><span class="card-header  rotate">${subject.name}</span>
                     <div class="card-content d-flex">
                         <a href="./quection.php?id=${subject.id}&type=subject" class="btn view play">Play Deck</a>
@@ -72,9 +58,10 @@
                         <button onClick="getModuleBySubject(${subject.id})" class="btn view">View Sub Deck</button>
                     </div></div>    
                 </div>`;
-                    $('.cards-set').append(template);
-                    } 
-                })
+                            $('.cards-set').append(template);
+                        }
+                    })
+                }
             })
 
         }
@@ -95,8 +82,11 @@
 
                     modules = response.data.data;
                     $('.s-card').remove();
-                    modules.forEach(module => {
-                        template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
+                    if (modules.length == 0) {
+                        $('.cards-set').append(errorTemplate);
+                    } else {
+                        modules.forEach(module => {
+                            template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
                 <div class="subject-card col mx-auto"><span class="card-header  rotate">${module.name}</span>
                     <div class="card-content d-flex">
                     <a href="./quection.php?id=${module.id}&type=module" class="btn view play">Play Deck</a>
@@ -104,8 +94,10 @@
                         <button class="btn view" onClick="getTopicsByModule(${module.id})">View Sub Deck</button>
                     </div></div>    
                 </div>`;
-                        $('.cards-set').append(template);
-                    })
+                            $('.cards-set').append(template);
+                        })
+                    }
+
                 }
 
             })
@@ -126,19 +118,22 @@
 
                     modules = response.data.data;
                     $('.s-card').remove();
-                    modules.forEach(module => {
-                        template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
+                    if (modules.length == 0) {
+                        $('.cards-set').append(errorTemplate);
+                    } else {
+                        modules.forEach(module => {
+                            template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
                 <div class="subject-card col mx-auto"><span class="card-header rotate">${module.name}</span>
                     <div class="card-content d-flex">
                     <a href="./quection.php?id=${module.id}&type=topic" class="btn view play">Play Deck</a>
                     </div></div>    
                 </div>`;
-                        $('.cards-set').append(template);
-                    })
+                            $('.cards-set').append(template);
+                        })
+                    }
                 }
             })
         }
-
     </script>
 </body>
 
@@ -240,5 +235,25 @@
     .play,
     .view {
         font-size: 12px;
+    }
+
+    .empty-modules {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .empty-modules span {
+        font-size: 24px;
+        font-weight: 700;
+        opacity: 30%;
+        color: blue;
+    }
+
+    .empty-modules img {
+        width: 3rem;
+        opacity: 30%;
+        color: blue;
     }
 </style>
