@@ -7,7 +7,7 @@
         </div>
         <div class="item mx-2 d-block d-md-block d-lg-block">
         <img src="../assets/icons/noun-email.png" alt="#" style="width: 24px;">
-            <span class="text-light mx-1">inquiries@elavateh.au.com</span>
+        <span class="text-light mx-1"><a href="mailto:hello@elevatehsc.com.au">hello@elevatehsc.com.au</a></span>
         </div>
         </div>
     </div>
@@ -24,5 +24,9 @@
     .header .item{
         line-height: 0px;
         padding: 3px;
+    }
+    .text-light a{
+        color: white;
+        text-decoration: none;
     }
 </style>

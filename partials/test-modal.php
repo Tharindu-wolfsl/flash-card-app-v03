@@ -9,7 +9,7 @@
         <p class="text-success text-center mx-auto h3" id="error-text">This is Learn more link!</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success mx-auto text-light" onclick="closeModal()" id="modal-done">Done!</button>
+        <!-- <button type="button" class="btn btn-success mx-auto text-light" onclick="closeModal()" id="modal-done">Done!</button> -->
       </div>
     </div>
   </div>

@@ -18,7 +18,7 @@
     <div class="container">
         <div class="card-section my-4 pb-5">
             <h3 class="card-sec-title text-center mb-4">
-                SELECT <span>A CARD</span> TO PLAY
+                SELECT <span>A DECK</span> TO STUDY
             </h3>
             <div class="cards-set row mx-auto gy-3 gx-4">
                 <!-- <div class="empty-modules d-flex justify-content-center">
@@ -43,13 +43,15 @@
             }).then(response => {
                 let subjects = [];
                 let template = ``;
+                let unreg_subs= [];
                 let card_section = document.querySelector('.cards-set');
                 subjects = response.data.data.subjects;
-                if (subjects.length == 0) {
+                registered = subjects.filter(subject => subject.registered == '1');
+                console.log("REGISTERED", registered);
+                if (registered.length == 0) {
                     $('.cards-set').append(errorTemplate);
                 } else {
-                    subjects.forEach(subject => {
-                        if (subject.registered == "1") {
+                    registered.forEach(subject => {
                             template = `<div class="s-card col-lg-4 col-md-6 col-sm-12 d-flex ">
                 <div class="subject-card col mx-auto"><span class="card-header  rotate">${subject.name}</span>
                     <div class="card-content d-flex">
@@ -59,7 +61,7 @@
                     </div></div>    
                 </div>`;
                             $('.cards-set').append(template);
-                        }
+
                     })
                 }
             })
@@ -252,7 +254,7 @@
     }
 
     .empty-modules img {
-        width: 3rem;
+        width: 2rem;
         opacity: 30%;
         color: blue;
     }
